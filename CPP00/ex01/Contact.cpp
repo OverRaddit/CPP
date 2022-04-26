@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-class Animal {
+class Contact {
 	private:
 	std::string fname;
 	std::string lname;
@@ -27,11 +27,11 @@ class Animal {
 	}
 };
 
-int main() {
-	Animal animal;
-	animal.set_animal(100, 50);
-	animal.increase_food(30);
+// int main() {
+// 	Animal animal;
+// 	animal.set_animal(100, 50);
+// 	animal.increase_food(30);
 
-	animal.view_stat();
-	return 0;
-}
+// 	animal.view_stat();
+// 	return 0;
+// }
