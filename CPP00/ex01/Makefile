@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/04/20 17:53:09 by gshim            ###   ########.fr        #
+#    Updated: 2022/04/27 16:09:12 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,9 @@ CDEBUG		=	-g -fsanitize=address
 # =============================================================================
 # File Variables
 # =============================================================================
-NAME		=	megaphone
+NAME		=	phonebook
 SRCS_DIR	=	./
-SRC_LIST	=	megaphone.cpp
+SRC_LIST	=	Contact.cpp PhoneBook.cpp Main.cpp
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
 OBJS		=	$(SRCS:.cpp=.o)
 

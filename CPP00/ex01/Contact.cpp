@@ -1,37 +1,95 @@
-#include <iostream>
-#include <string>
-class Contact {
-	private:
-	std::string fname;
-	std::string lname;
-	std::string nname;
-	std::string phonenum;
-	std::string darkest_secret;
 
-	//
-	int food;
-	int weight;
+#include "Contact.hpp"
 
-	public:
-	void set_animal(int _food, int _weight) {
-	food = _food;
-	weight = _weight;
+// Constructor
+Contact::Contact(void)
+{
+
+}
+
+// Getter & Setter
+std::string Contact::getFname()
+{
+	return (fname);
+}
+std::string Contact::getLname()
+{
+	return (lname);
+}
+std::string Contact::getNname()
+{
+	return (nname);
+}
+std::string Contact::getPnum()
+{
+	return (pnum);
+}
+std::string Contact::getDsecret()
+{
+	return (dsecret);
+}
+
+void Contact::setFname(std::string _fname)
+{
+	fname = _fname;
+}
+void Contact::setLname(std::string _lname)
+{
+	lname = _lname;
+}
+void Contact::setNname(std::string _nname)
+{
+	nname = _nname;
+}
+void Contact::setPnum(std::string _pnum)
+{
+	pnum = _pnum;
+}
+void Contact::setDsecret(std::string _dsecret)
+{
+	dsecret = _dsecret;
+}
+
+bool getline_field(std::string fieldname, std::string &str)
+{
+	while(1){
+		std::cout << fieldname << "> ";
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			return (false);
+		if (str.length() == 0)
+			continue ;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(1024, '\n');
+		}
+		return (true);
 	}
-	void increase_food(int inc) {
-	food += inc;
-	weight += (inc / 3);
-	}
-	void view_stat() {
-	std::cout << "이 동물의 food   : " << food << std::endl;
-	std::cout << "이 동물의 weight : " << weight << std::endl;
-	}
-};
+}
 
-// int main() {
-// 	Animal animal;
-// 	animal.set_animal(100, 50);
-// 	animal.increase_food(30);
+bool Contact::set_info(void)
+{
+	Contact contact;
+	std::string _fname;
+	std::string _lname;
+	std::string _nname;
+	std::string _pnum;
+	std::string _dsecret;
 
-// 	animal.view_stat();
-// 	return 0;
-// }
+	if (!getline_field("First name", _fname) ||
+		!getline_field("Last name", _lname) ||
+		!getline_field("Nickname", _nname) ||
+		!getline_field("PhoneNumber", _pnum) ||
+		!getline_field("Darkest Secret", _dsecret))
+		return (false);
+
+	setFname(_fname);
+	setLname(_lname);
+	setNname(_nname);
+	setPnum(_pnum);
+	setDsecret(_dsecret);
+
+
+	return (true);
+}
