@@ -7,6 +7,11 @@ PhoneBook::PhoneBook(void)
 	count = 0;
 }
 
+int	PhoneBook::getCount(void)
+{
+	return count;
+}
+
 void PhoneBook::addContact()	// 연락처를 추가한다.
 {
 	// 다음공간에 저장. 담겨있던 데이터가 존재하면 지워진다.
@@ -17,6 +22,17 @@ void PhoneBook::addContact()	// 연락처를 추가한다.
 	count = (count == 8) ? count : count + 1;
 }
 
+std::string truncate(std::string str, size_t width, bool show_ellipsis=true)
+{
+	if (str.length() > width)
+	{
+		if (show_ellipsis)
+			return str.substr(0, width) + ".";
+		else
+			return str.substr(0, width);
+	}
+	return str;
+}
 
 // 10보다 길면 벗어난 범위를 "."으로 대체
 void PhoneBook::printContact(int i)
@@ -24,40 +40,76 @@ void PhoneBook::printContact(int i)
 	if (i < 0 || i > 7)
 		return ;
 
-	std::cout << std::setw(10);
-	std::cout << i + 1 << "|";
+	std::cout << std::setw(10) << i + 1 << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getLname(), 9) << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getFname(), 9) << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getNname(), 9) << "|" << std::endl;
+}
 
-	std::cout << std::setw(10);
-	std::cout << contacts[i].getLname() << "|";
+void PhoneBook::printContactAll(int i)
+{
+	if (i < 0 || i > 7)
+		return ;
 
-	std::cout << std::setw(10);
-	std::cout << contacts[i].getFname() << "|";
+	std::cout << std::setw(15) << truncate(contacts[i].getFname(), 14) << "|";
+	std::cout << std::setw(15) << truncate(contacts[i].getLname(), 14) << "|";
+	std::cout << std::setw(15) << truncate(contacts[i].getNname(), 14) << "|";
+	std::cout << std::setw(15) << truncate(contacts[i].getPnum(), 14) << "|";
+	std::cout << std::setw(15) << truncate(contacts[i].getDsecret(), 14) << "|" << std::endl;
+}
 
-	std::cout << std::setw(10);
-	std::cout << contacts[i].getNname() << "|" << std::endl;
+void PhoneBook::printHead(void)
+{
+	std::cout << std::setw(10) << "Idx" << "|";
+	std::cout << std::setw(10) << "Lastname" << "|";
+	std::cout << std::setw(10) << "Firstname" << "|";
+	std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << std::setfill('-') << std::setw(45) << "\n";
+	std::cout << std::setfill(' ');
+}
+
+void PhoneBook::printHeadAll(void)
+{
+	std::cout << std::setw(15) << "Firstname" << "|";
+	std::cout << std::setw(15) << "Lastname" << "|";
+	std::cout << std::setw(15) << "Nickname" << "|";
+	std::cout << std::setw(15) << "Phone Number" << "|";
+	std::cout << std::setw(15) << "Darkest Secret" << "|" << std::endl;
+	std::cout << std::setfill('-') << std::setw(45) << "\n";
+	std::cout << std::setfill(' ');
 }
 
 void PhoneBook::printContacts(void)			// 연락처목록을 출력한다.
 {
-	// 연락처가 비었다.
-	if (count == 0){
-		std::cout << "There's no Contact :( \n";
-		return ;
-	}
-	// 연락처가 존재한다.
-	std::cout << std::setw(10);
-	std::cout << "Idx" << "|";
-	std::cout << std::setw(10);
-	std::cout << "Lastname" << "|";
-	std::cout << std::setw(10);
-	std::cout << "Firstname" << "|";
-	std::cout << std::setw(10);
-	std::cout << "Nickname" << "|" << std::endl;
+	printHead();
 	for(int i = 0 ; i < count ; i++)
 		printContact(i);
 }
 
-void PhoneBook::searchContact(int idx)		// 인덱스에 해당하는 연락처를 출력한다.
+void PhoneBook::searchContact(void)		// 인덱스에 해당하는 연락처를 출력한다.
 {
+	int idx;
 
+	// 등록된 연락처 x
+	if (!getCount())
+	{
+		std::cout << "There's no Contact :( \n";
+		return ;
+	}
+	printContacts();
+	while(1)
+	{
+		std::cout << "Search index> ";
+		std::cin >> idx;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		if (idx < 1 || idx > 8)
+			std::cout << "Invalid Index" << std::endl;
+		else if (idx > getCount())
+			std::cout << "There's no Contact Yet." << std::endl;
+		else
+			break ;
+	}
+	printHeadAll();
+	printContactAll(idx - 1); // idx to num
 }
