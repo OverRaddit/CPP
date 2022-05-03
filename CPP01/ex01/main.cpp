@@ -11,5 +11,9 @@ int main()
 
 	delete[] p;
 
+	// Check leaks
+	// while(1)
+	// 	;
+
 	return (0);
 }

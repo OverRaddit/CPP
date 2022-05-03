@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/04/20 17:52:08 by gshim            ###   ########.fr        #
+#    Updated: 2022/04/30 16:24:57 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ CDEBUG		=	-g -fsanitize=address
 # File Variables
 # =============================================================================
 NAME		=	megaphone
+HEADER		=	./
 SRCS_DIR	=	./
 SRC_LIST	=	megaphone.cpp
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
@@ -44,9 +45,9 @@ OBJS		=	$(SRCS:.cpp=.o)
 # Target Generating
 # =============================================================================
 $(NAME)			:	$(OBJS)
-	@echo $(GREEN) "Source files are compiled!\n" $(EOC)
-	@echo $(WHITE) "Building $(NAME) for" $(YELLOW) "Mandatory" $(WHITE) "..." $(EOC)
-	@$(CC) $(CFLAGS) -lpthread $^ -o $@
+	@echo $(GREEN) "Source files are compiled!\n\n" $(EOC)
+	@echo $(WHITE) "Building executable $(NAME)" $(EOC)
+	@$(CC) $(CFLAGS) -I $(HEADER) $^ -o $@
 	@echo $(GREEN) "$(NAME) is created!\n" $(EOC)
 
 $(SRCS_DIR)/%.o	:	$(SRCS_DIR)/%.c

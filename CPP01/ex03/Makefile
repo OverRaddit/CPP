@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/05/02 17:55:36 by gshim            ###   ########.fr        #
+#    Updated: 2022/05/02 17:55:03 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,12 @@ CDEBUG		=	-g -fsanitize=address
 # =============================================================================
 # File Variables
 # =============================================================================
-NAME		=	zombie
+NAME		=	UnnecessaryViolence
 SRCS_DIR	=	./
-SRC_LIST	=	Zombie.cpp		\
-				ZombieHorde.cpp	\
-				main.cpp
+SRC_LIST	=	main.cpp	\
+				HumanA.cpp	\
+				HumanB.cpp	\
+				Weapon.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
 OBJS		=	$(SRCS:.cpp=.o)
@@ -54,7 +55,8 @@ $(NAME)			:	$(OBJS)
 
 $(SRCS_DIR)/%.o	:	$(SRCS_DIR)/%.cpp
 	@echo $(YELLOW) "Compiling...\t" $< $(EOC) $(LINE_CLEAR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $<
+#	@$(CC) $(CFLAGS) -c $< -o $@
 
 # =============================================================================
 # Rules

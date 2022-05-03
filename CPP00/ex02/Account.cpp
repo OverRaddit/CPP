@@ -1,5 +1,15 @@
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
+#include <iomanip> // setw
+// =============================================================================
+// Static variables
+// =============================================================================
+
+int	Account::_nbAccounts;
+int	Account::_totalAmount;
+int	Account::_totalNbDeposits;
+int	Account::_totalNbWithdrawals;
 
 
 // =============================================================================
@@ -23,10 +33,25 @@ int		Account::getNbWithdrawals( void )
 	return _totalNbWithdrawals;
 }
 
-// 타임스탬프 어떻게 찍지?
+// =============================================================================
+// Method
+// =============================================================================
+
 void	Account::_displayTimestamp( void )
 {
-	std::cout << "[19920104_091532] ";
+	std::time_t result = std::time(nullptr);
+	std::tm *tm = std::localtime(&result);
+
+	std::cout << std::setfill('0');
+	std::cout << "[";
+	std::cout << tm->tm_year + 1900;
+	std::cout << std::setw(2) << tm->tm_mon << std::setw(2) << tm->tm_mday << "_";
+	std::cout << std::setw(2) << tm->tm_hour;
+	std::cout << std::setw(2) << tm->tm_min << std::setw(2) << tm->tm_sec;
+	std::cout << "] ";
+	std::cout << std::setfill(' ');
+	//[yyyymmdd_hhmmss] 122329_17303
+	//std::cout << "[19920104_091532] ";
 }
 
 // 왜 static을 쓸 수 없지?
@@ -40,7 +65,7 @@ void	Account::displayAccountsInfos(void)
 	std::cout << "accounts:" << getNbAccounts();
 	std::cout << ";total:" << getTotalAmount();
 	std::cout << ";deposits:" << getNbDeposits();
-	std::cout << ";withdrawals:" << getNbWithdrawals();
+	std::cout << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
 // 뒤에 const붙은건 뭐지?
@@ -72,16 +97,12 @@ void	Account::makeDeposit( int deposit )
 
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex;
-	std::cout << ";p_amount:" << _amount;
+	std::cout << ";p_amount:" << _amount - deposit;
 	std::cout << ";deposit:" << deposit;
-	std::cout << ";amount:" << _totalAmount;
-	std::cout << ";nb_deposits:" << _nbWithdrawals << std::endl;
+	std::cout << ";amount:" << _amount;
+	std::cout << ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
-/*
-[19920104_091532] index:0;p_amount:47;withdrawal:refused
-[19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
-*/
 bool	Account::makeWithdrawal( int withdrawal )
 {
 	bool flag = true;
@@ -100,22 +121,22 @@ bool	Account::makeWithdrawal( int withdrawal )
 
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex;
-	std::cout << ";p_amount:" << _amount;
-	std::cout << ";withdrawal:" << withdrawal;
-	std::cout << ";amount:" << _totalAmount;
-	std::cout << ";nb_withdrawals:";
-
+	std::cout << ";p_amount:" << _amount + withdrawal;
+	std::cout << ";withdrawal:";
 	if (flag)
-		std::cout << _nbWithdrawals << std::endl;
+		std::cout << withdrawal;
 	else
+	{
 		std::cout << "refused" << std::endl;
+		return (flag);
+	}
+	std::cout << ";amount:" << _amount;
+	std::cout << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+
 
 	return (flag);
 }
 
-/* 생성자
-[19920104_091532] index:0;amount:42;created
-*/
 Account::Account( int initial_deposit )
 {
 	// 개인정보
@@ -136,7 +157,8 @@ Account::Account( int initial_deposit )
 
 
 /* 소멸자
-[19920104_091532] index:0;amount:47;closed
+vector안에서의 소멸순서는 vector가 구현된 표준 라이브러리 따라 다르다
+아마 맥이랑 우분투사이의 라이브러리 구현따라 다른것 때문에 역순으로 나오지 않았나 생각
 */
 Account::~Account( void )
 {
@@ -145,7 +167,9 @@ Account::~Account( void )
 	std::cout << ";amount:" << _amount;
 	std::cout << ";closed" <<  std::endl;
 
-	// static변수 수정 (보충필요)
-	// _nbAccounts--;
-	// _totalAmount -= _amount;
+	// static변수 수정
+	_nbAccounts--;
+	_totalAmount -= _amount;
+	_totalNbDeposits -= _nbDeposits;
+	_totalNbWithdrawals -= _nbWithdrawals;
 }

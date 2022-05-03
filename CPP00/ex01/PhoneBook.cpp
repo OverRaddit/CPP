@@ -1,4 +1,16 @@
 #include "PhoneBook.hpp"
+#include <cstdio> // void clearerr(FILE* stream);
+
+void	validate_input(void)
+{
+	if (std::cin.eof() || std::cin.fail())
+	{
+		std::cout << "Input Fail\n";
+		std::cin.clear();
+		clearerr(stdin);	// 표준입력fd 0
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+}
 
 PhoneBook::PhoneBook(void)
 {
@@ -51,11 +63,11 @@ void PhoneBook::printContactAll(int i)
 	if (i < 0 || i > 7)
 		return ;
 
-	std::cout << std::setw(15) << truncate(contacts[i].getFname(), 14) << "|";
-	std::cout << std::setw(15) << truncate(contacts[i].getLname(), 14) << "|";
-	std::cout << std::setw(15) << truncate(contacts[i].getNname(), 14) << "|";
-	std::cout << std::setw(15) << truncate(contacts[i].getPnum(), 14) << "|";
-	std::cout << std::setw(15) << truncate(contacts[i].getDsecret(), 14) << "|" << std::endl;
+	std::cout << std::setw(10) << truncate(contacts[i].getFname(), 9) << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getLname(), 9) << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getNname(), 9) << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getPnum(), 9) << "|";
+	std::cout << std::setw(10) << truncate(contacts[i].getDsecret(), 9) << "|" << std::endl;
 }
 
 void PhoneBook::printHead(void)
@@ -70,12 +82,12 @@ void PhoneBook::printHead(void)
 
 void PhoneBook::printHeadAll(void)
 {
-	std::cout << std::setw(15) << "Firstname" << "|";
-	std::cout << std::setw(15) << "Lastname" << "|";
-	std::cout << std::setw(15) << "Nickname" << "|";
-	std::cout << std::setw(15) << "Phone Number" << "|";
-	std::cout << std::setw(15) << "Darkest Secret" << "|" << std::endl;
-	std::cout << std::setfill('-') << std::setw(45) << "\n";
+	std::cout << std::setw(10) << "Firstname" << "|";
+	std::cout << std::setw(10) << "Lastname" << "|";
+	std::cout << std::setw(10) << "Nickname" << "|";
+	std::cout << std::setw(10) << "PhoneNum" << "|";
+	std::cout << std::setw(10) << "D_Secret" << "|" << std::endl;
+	std::cout << std::setfill('-') << std::setw(55) << "\n";
 	std::cout << std::setfill(' ');
 }
 
@@ -101,6 +113,7 @@ void PhoneBook::searchContact(void)		// 인덱스에 해당하는 연락처를 �
 	{
 		std::cout << "Search index> ";
 		std::cin >> idx;
+		validate_input();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if (idx < 1 || idx > 8)

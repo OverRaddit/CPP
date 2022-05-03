@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/05/02 17:55:36 by gshim            ###   ########.fr        #
+#    Updated: 2022/05/02 17:56:10 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,10 @@ CDEBUG		=	-g -fsanitize=address
 # =============================================================================
 # File Variables
 # =============================================================================
-NAME		=	zombie
+NAME		=	Harl
 SRCS_DIR	=	./
-SRC_LIST	=	Zombie.cpp		\
-				ZombieHorde.cpp	\
-				main.cpp
+SRC_LIST	=	main.cpp	\
+				Harl.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
 OBJS		=	$(SRCS:.cpp=.o)

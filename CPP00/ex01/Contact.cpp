@@ -1,6 +1,6 @@
-
 #include "Contact.hpp"
-
+#include "Util.hpp"
+#include <iomanip> // setw
 // Constructor
 Contact::Contact(void)
 {
@@ -53,17 +53,18 @@ void Contact::setDsecret(std::string _dsecret)
 bool getline_field(std::string fieldname, std::string &str)
 {
 	while(1){
-		std::cout << fieldname << "> ";
+		std::cout << std::setw(15) << fieldname << "> ";
 		std::getline(std::cin, str);
-		if (std::cin.eof())
-			return (false);
+		validate_input();
 		if (str.length() == 0)
 			continue ;
-		if (std::cin.fail())
-		{
-			std::cin.clear();
-			std::cin.ignore(1024, '\n');
-		}
+		// if (std::cin.eof())
+		// 	return (false);
+		// if (std::cin.fail())
+		// {
+		// 	std::cin.clear();
+		// 	std::cin.ignore(1024, '\n');
+		// }
 		return (true);
 	}
 }
