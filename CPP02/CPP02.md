@@ -66,4 +66,9 @@ Fixed& operator=(const Fixed& fixed);
 
 # 헷갈리는 점
 
-fraction이 static const int인데 도저히 어떻게 손대야 할지 모르겠다.
+fraction이 static const int인데 도저히 어떻게 손대야 할지 모르겠다.'
+
+
+# 증감연산자
+
+※ 후위 연산자를 오버로딩 하기 위해서 매개 변수로 int를 넘기는데 이때 int는 특별한 의미를 가지는 것이 아니라 전위/후위 연산자의 구분을 위한 것이다.
