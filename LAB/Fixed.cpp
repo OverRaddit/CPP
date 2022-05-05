@@ -55,7 +55,8 @@ int		Fixed::toInt(void) const
 	return (rawbits >> fractional);
 }
 
-// [42]
+// 왜 out에는 const를 안붙이지?
+// ostream을 참조자로 받은 이유는?
 std::ostream& operator<< (std::ostream& out, const Fixed& fixed)
 {
 	out << fixed.toFloat();
@@ -89,28 +90,28 @@ bool Fixed::operator!=(const Fixed& fixed) const
 }
 
 // arithmetic operators
-Fixed Fixed::operator+(const Fixed& fixed) const
+Fixed Fixed::operator+(const Fixed& fixed)
 {
 	Fixed ret(this->toFloat() + fixed.toFloat());
 
 	return ret;
 }
 
-Fixed Fixed::operator-(const Fixed& fixed) const
+Fixed Fixed::operator-(const Fixed& fixed)
 {
 	Fixed ret(this->toFloat() - fixed.toFloat());
 
 	return ret;
 }
 
-Fixed Fixed::operator*(const Fixed& fixed) const
+Fixed Fixed::operator*(const Fixed& fixed)
 {
 	Fixed ret(this->toFloat() * fixed.toFloat());
 
 	return ret;
 }
 
-Fixed Fixed::operator/(const Fixed& fixed) const
+Fixed Fixed::operator/(const Fixed& fixed)
 {
 	Fixed ret(this->toFloat() / fixed.toFloat());
 
@@ -134,14 +135,14 @@ Fixed Fixed::operator++(int)
 	return ret;
 }
 
-// --a
+// ++a
 Fixed& Fixed::operator--()
 {
 	rawbits--;
 	return *this;
 }
 
-// a--
+// a++
 Fixed Fixed::operator--(int)
 {
 	Fixed ret(*this);
@@ -153,7 +154,7 @@ Fixed Fixed::operator--(int)
 
 const Fixed& Fixed::min(const Fixed& A, const Fixed& B)
 {
-	if (A <= B)
+	if (A <= B)	// 왜 빨간줄이지? 비교연산자 함수원형뒤에 const를 붙이니 에러가 해결되었다.
 		return A;
 	else
 		return B;

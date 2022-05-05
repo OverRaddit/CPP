@@ -13,11 +13,12 @@ public:
 	// Constructors & Desturctors
 	//===================================
 	Fixed(void);
-	Fixed(const Fixed& fixed);				// 복사 생성자
+	Fixed(const Fixed& fixed);					// 복사 생성자
 	Fixed(int n);
 	Fixed(float n);
+	// 이 친구 반환값에 const를 해두어야 하는가?
 	Fixed& operator=(const Fixed& fixed);	// 복사 대입 연산자
-	~Fixed();								// 소멸자
+	~Fixed();									// 소멸자
 
 	//===================================
 	// Comparison operators

@@ -1,6 +1,5 @@
 #include "Fixed.hpp"
 #include <iostream>
-
 int main( void )
 {
 	Fixed a;
@@ -19,11 +18,10 @@ int main( void )
 	// Fixed x(3);
 	// Fixed y(9);
 
-	// Fixed me = Fixed::max(a,b);
-	// me.setRawBits(-42);
-	// std::cout << me << std::endl;
-	// std::cout << a << std::endl;
-	// std::cout << b << std::endl;
+	// std::cout << x * y << std::endl;
+	// if (x < y)
+	// 	std::cout << "hi";
+	// std::cout << (x < y) << std::endl;
 
 	return 0;
 }

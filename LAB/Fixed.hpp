@@ -32,10 +32,10 @@ public:
 	//===================================
 	// Arithmetic operators
 	//===================================
-	Fixed operator+(const Fixed& fixed) const;
-	Fixed operator-(const Fixed& fixed) const;
-	Fixed operator*(const Fixed& fixed) const;
-	Fixed operator/(const Fixed& fixed) const;
+	Fixed operator+(const Fixed& fixed);
+	Fixed operator-(const Fixed& fixed);
+	Fixed operator*(const Fixed& fixed);
+	Fixed operator/(const Fixed& fixed);
 
 	//===================================
 	// In/decrement operators

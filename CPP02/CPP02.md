@@ -69,6 +69,54 @@ Fixed& operator=(const Fixed& fixed);
 fraction이 static const int인데 도저히 어떻게 손대야 할지 모르겠다.'
 
 
-# 증감연산자
+# ex02
+
+## 증감연산자
 
 ※ 후위 연산자를 오버로딩 하기 위해서 매개 변수로 int를 넘기는데 이때 int는 특별한 의미를 가지는 것이 아니라 전위/후위 연산자의 구분을 위한 것이다.
+
+## min, max 구현
+
+https://www.cplusplus.com/reference/algorithm/max/
+같을때는 앞에 인자를 반환한다.
+
+- min,max함수 내부에서 A < B를 호출하는데 빨간줄로 오류가 표시된다.
+	비교연산자들 구현에서 함수원형뒤에 const를 붙이니 오류가 사라졌다.
+	const에 대한 개념을 확실히 잡고가야 한다.
+
+함수원형뒤에 Const에 대한 기능 추측...
+
+함수의 파라미터로 const를 붙이면
+내부에서 실행되는 함수들은 함수원형뒤에 const를 붙인함수(=읽기전용함수)만 실행할 수 있다.
+
+그럼 직접 값을 변경할 수 있을까?
+
+
+# [42]
+```C++
+std::ostream& operator<< (std::ostream& out, const Fixed& fixed)
+{
+	out << fixed.toFloat();
+	return (out);
+}
+```
+왜 out이 const가 아니고 참조자로 받도록 되어잇을까?
+
+- const가 아닌 이유.
+	const로 선언했다면 const객체가 됨과 동시에 const멤버함수만 쓸 수 있다.
+	그런데 우리는 ostream의 멤버함수를 작성하는게 아니라
+	ostream과 출력할 객체를 인자로하는 전역함수를 만들고있다.
+	이런 전역함수는 const객체로는 접근할 수 없기때문에 out을 const로 하지 않는다.
+
+- 참조자로 받은 이유
+	ostream은 굉장히 큰 객체일 것이다.
+	이런 큰 객체는 파라미터로 복사하면 매우 비효율적이기 때문에 call by reference로 넘겨줄 필요가
+	있지 않을까 예상해본다.
+
+# 함수의 반환값을 const로 하는 이유는 무엇일까?
+
+
+# 이항연산자를 구현시..
+
+- 덧셈법칙이 통용되지 않을 수 있어서
+해당 연산자는 전역에 선언하는 것이 덧셈법칙을 만족한다.
