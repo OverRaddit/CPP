@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gshim <gshim@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/05/05 17:29:19 by gshim            ###   ########.fr        #
+#    Updated: 2022/05/05 20:52:53 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ NAME		=	Fixed
 SRCS_DIR	=	./
 SRC_LIST	=	Fixed.cpp		\
 				Point.cpp		\
+				bsp.cpp		\
 				main.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
