@@ -2,10 +2,10 @@
 #include <iostream>
 
 int main( void ) {
-	ScavTrap A("Mr.A");
-	ScavTrap B("Mr.B");
-	ScavTrap C("practice bot");
-	ScavTrap D;
+	FragTrap A("Mr.A");
+	FragTrap B("Mr.B");
+	FragTrap C("practice bot");
+	FragTrap D;
 
 	A.getStatus();
 	B.getStatus();
