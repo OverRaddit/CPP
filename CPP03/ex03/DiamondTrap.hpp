@@ -7,10 +7,15 @@
 class DiamondTrap : public FragTrap, ScavTrap
 {
 private:
-	/* data */
+	std::string name;
 public:
-	DiamondTrap(/* args */);
-	~DiamondTrap();
+	DiamondTrap(/* args */);									// 기본 생성자
+	DiamondTrap(std::string _name);
+	DiamondTrap(const DiamondTrap& s);							// 복사 생성자
+	DiamondTrap& DiamondTrap::operator=(const DiamondTrap& s);	// 대입 연산자
+	~DiamondTrap();												// 소멸자
+
+	void whoAmI();
 };
 
 
