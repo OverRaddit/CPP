@@ -1,4 +1,4 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
 int main( void ) {
@@ -19,13 +19,13 @@ int main( void ) {
 		B.takeDamage(A.getDamage());	// b가 a에게 맞음
 	}
 
-	// b repair itself 10 times
-	for(int i=0;i<10;i++)
+	// b repair itself 100 times
+	for(int i=0;i<100;i++)
 	{
 		if (B.enoughEnergy())
 		{
 			B.beRepaired(1);
-			std::cout << "B repaired itself " << i+1 << " times!!" << std::endl;
+			//std::cout << "B repaired itself " << i+1 << " times!!" << std::endl;
 		}
 	}
 
@@ -35,6 +35,8 @@ int main( void ) {
 		B.attack(A.getName());
 		A.takeDamage(B.getDamage());
 	}
+
+	A.highFivesGuys();
 
 	A.getStatus();
 	B.getStatus();

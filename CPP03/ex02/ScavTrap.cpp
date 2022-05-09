@@ -4,20 +4,19 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
 	setHp(100);
-	setEp(5);
+	setEp(50);
 	setDamage(20);
 	std::cout << "ScavTrap created by default" << std::endl;
 }
 ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
 {
 	setHp(100);
-	setEp(5);
+	setEp(50);
 	setDamage(20);
 	std::cout << "ScavTrap created by name" << std::endl;
 }
 ScavTrap::~ScavTrap()
 {
-	ClapTrap::~ClapTrap();
 	std::cout << "ScavTrap " << getName() << " eliminated " << std::endl;
 }
 
@@ -29,6 +28,7 @@ ScavTrap::ScavTrap(const ScavTrap& s)
 ScavTrap& ScavTrap::operator=(const ScavTrap& s)
 {
 	ClapTrap::operator=(s); // [4]
+	return *this;
 }
 
 void ScavTrap::attack(const std::string& target)

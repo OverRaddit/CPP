@@ -11,7 +11,7 @@ private:
 	unsigned int hp;
 	unsigned int ep;
 	unsigned int damage;
-	static const unsigned int maxhp = 200;			// [1] const로만 해도 가능할까?
+	static const unsigned int maxhp = 100;			// [1] const로만 해도 가능할까?
 
 public:
 	ClapTrap();										// 기본 생성자
@@ -28,12 +28,6 @@ public:
 	unsigned int getDamage(void) const;
 	std::string getName(void) const;
 	void getStatus(void) const;
-	unsigned int getHp(void) const;
-	unsigned int getEp(void) const;
-
-	void setHp(unsigned int n);
-	void setEp(unsigned int n);
-	void setDamage(unsigned int n);
 };
 
 

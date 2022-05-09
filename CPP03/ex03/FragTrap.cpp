@@ -17,7 +17,6 @@ FragTrap::FragTrap(std::string _name) : ClapTrap(_name)
 }
 FragTrap::~FragTrap()
 {
-	ClapTrap::~ClapTrap();
 	std::cout << "FragTrap " << getName() << " eliminated " << std::endl;
 }
 
@@ -29,6 +28,7 @@ FragTrap::FragTrap(const FragTrap& s)
 FragTrap& FragTrap::operator=(const FragTrap& s)
 {
 	ClapTrap::operator=(s); // [4]
+	return *this;
 }
 
 void FragTrap::attack(const std::string& target)

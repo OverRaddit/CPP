@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/05/07 20:59:35 by gshim            ###   ########.fr        #
+#    Updated: 2022/05/09 16:05:57 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ CDEBUG		=	-g -fsanitize=address
 NAME		=	ClapTrap
 SRCS_DIR	=	./
 SRC_LIST	=	ClapTrap.cpp		\
+				FragTrap.cpp		\
 				ScavTrap.cpp		\
+				DiamondTrap.cpp		\
 				main.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))

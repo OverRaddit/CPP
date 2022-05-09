@@ -20,12 +20,12 @@ int main( void ) {
 	}
 
 	// b repair itself 10 times
-	for(int i=0;i<10;i++)
+	for(int i=0;i<50;i++)
 	{
 		if (B.enoughEnergy())
 		{
 			B.beRepaired(1);
-			std::cout << "B repaired itself " << i+1 << " times!!" << std::endl;
+			//std::cout << "B repaired itself " << i+1 << " times!!" << std::endl;
 		}
 	}
 
@@ -35,6 +35,11 @@ int main( void ) {
 		B.attack(A.getName());
 		A.takeDamage(B.getDamage());
 	}
+
+	A.guardGate();
+	A.guardGate();
+	A.guardGate();
+	A.guardGate();
 
 	A.getStatus();
 	B.getStatus();

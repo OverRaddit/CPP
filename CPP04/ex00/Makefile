@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
+#    By: gshim <gshim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/05/09 16:49:40 by gshim            ###   ########.fr        #
+#    Updated: 2022/05/06 10:57:26 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,6 @@ CDEBUG		=	-g -fsanitize=address
 NAME		=	ClapTrap
 SRCS_DIR	=	./
 SRC_LIST	=	ClapTrap.cpp		\
-				ScavTrap.cpp		\
-				FragTrap.cpp		\
 				main.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))

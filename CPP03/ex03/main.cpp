@@ -1,11 +1,13 @@
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int main( void ) {
-	FragTrap A("Mr.A");
-	FragTrap B("Mr.B");
-	FragTrap C("practice bot");
-	FragTrap D;
+	DiamondTrap A("Mr.A");
+	DiamondTrap B("Mr.B");
+	DiamondTrap C("practice bot");
+	DiamondTrap D;
+
+	D = C;
 
 	A.getStatus();
 	B.getStatus();
@@ -20,12 +22,12 @@ int main( void ) {
 	}
 
 	// b repair itself 10 times
-	for(int i=0;i<10;i++)
+	for(int i=0;i<100;i++)
 	{
 		if (B.enoughEnergy())
 		{
 			B.beRepaired(1);
-			std::cout << "B repaired itself " << i+1 << " times!!" << std::endl;
+			//std::cout << "B repaired itself " << i+1 << " times!!" << std::endl;
 		}
 	}
 
@@ -35,6 +37,11 @@ int main( void ) {
 		B.attack(A.getName());
 		A.takeDamage(B.getDamage());
 	}
+
+	std::cout << A.getName() << std::endl;
+	std::cout << B.getName() << std::endl;
+	std::cout << C.getName() << std::endl;
+	std::cout << D.getName() << std::endl;
 
 	A.getStatus();
 	B.getStatus();

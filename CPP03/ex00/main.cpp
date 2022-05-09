@@ -7,6 +7,9 @@ int main( void ) {
 	ClapTrap C("practice bot");
 	ClapTrap D;
 
+	D = C;
+	//C = D;
+
 	A.getStatus();
 	B.getStatus();
 	C.getStatus();

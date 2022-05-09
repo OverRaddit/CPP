@@ -110,3 +110,12 @@ https://bestcowogok.blogspot.com/2013/10/c-6.html
 # 다중상속...?
 
 https://hyeonski.tistory.com/7
+
+
+# ㅍㅕㅇ가피드백
+
+- scav인가 frag인가 함수 오버로딩 안해서 부모 로그로 찍힘
+
+- guard 함수인가 그거 static 변수가 모든 객체가 공유함;;
+
+평가표에 protected 인지 확인하는 항목있었는데 나 그렇게 안함;;
