@@ -43,8 +43,10 @@ virtual void foo() = 0;
 
 순수가상함수로만 이뤄진 추상클래스를 [인터페이스]라고 한다.
 
-
-# WrongCat, WrongAnimal
-
+# ex03
+## WrongCat, WrongAnimal
 아예 안쓰는거 같아서 00 이후로 안건드렸다.
 이상이 없을지..?
+
+## private <-> protected
+오용한거 없나?
