@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/05/10 18:28:46 by gshim            ###   ########.fr        #
+#    Updated: 2022/05/10 20:30:01 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC_LIST	=	Animal.cpp				\
 				Cat.cpp					\
 				WrongCat.cpp			\
 				Dog.cpp					\
+				Brain.cpp					\
 				main.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))

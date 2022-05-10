@@ -64,6 +64,7 @@
 		"deque": "cpp",
 		"fstream": "cpp",
 		"stack": "cpp",
-		"clocale": "cpp"
+		"clocale": "cpp",
+		"filesystem": "cpp"
 	}
 }

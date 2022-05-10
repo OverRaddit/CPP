@@ -14,7 +14,7 @@ public:
 	Animal& operator=(const Animal& a);	// 대입연산자
 	virtual ~Animal();					// 소멸자
 
-	virtual void makeSound() const;		// 가상함수
+	virtual void makeSound() const = 0;
 	std::string getType(void) const;
 };
 

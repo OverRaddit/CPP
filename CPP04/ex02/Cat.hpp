@@ -2,11 +2,12 @@
 #define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal
 {
 private:
-	/* data */
+	Brain* brain;
 public:
 	Cat();							// 기본생성자
 	Cat(const Cat& a);				// 복사생성자

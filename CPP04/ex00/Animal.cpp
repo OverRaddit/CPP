@@ -1,0 +1,33 @@
+#include "Animal.hpp"
+
+Animal::Animal()
+{
+	type = "annonymous";
+	std::cout << "Animal Constructor" << std::endl;
+}
+
+Animal::Animal(const Animal& a)
+{
+	*this = a;
+}
+
+Animal& Animal::operator=(const Animal& a)
+{
+	this->type = a.type;
+	return *this;
+}
+
+Animal::~Animal()
+{
+	std::cout << "Animal Destructor" << std::endl;
+}
+
+void Animal::makeSound() const
+{
+	std::cout << "....!" << std::endl;
+}
+
+std::string Animal::getType(void) const
+{
+	return type;
+}

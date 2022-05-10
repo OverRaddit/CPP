@@ -2,11 +2,12 @@
 #define DOG_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal
 {
 private:
-	/* data */
+	Brain* brain;
 public:
 	Dog();							// 기본생성자
 	Dog(const Dog& a);				// 복사생성자
