@@ -50,3 +50,26 @@ virtual void foo() = 0;
 
 ## private <-> protected
 오용한거 없나?
+
+
+# ex04
+
+- 캐릭터가 버린 물질을 마음대로 다루되, unequip전에 주소를 저장해두어라.
+	메모리누수를 피해야함을 인지.
+- 인벤토리는 어떤 타입의 AMateria도 지원할 수 있다.
+	-> 인벤토리 배열의 자료형을 AMateria포인터형으로 하면 해결될 듯!
+
+
+- MateriaSource간 대입시 delete?
+- Character간 대입시 delete?
+
+p.11
+While assigning a Materia to another, copying the type doesn't make sense.
+=>??????????
+
+
+[2] 가상순수함수 형식의 소멸자
+
+
+
+# 같은 AMateria를 여러번 equip할 수 있을까?
