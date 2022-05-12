@@ -77,6 +77,7 @@ std::string const & Character::getName() const
 }
 void Character::equip(AMateria* m)
 {
+	if (!m->getCollectable()) return ;	// 주울 수 없는 상태라면 return
 	int nextIdx = getNextIdx();
 	if (nextIdx == -1)
 	{
@@ -86,6 +87,7 @@ void Character::equip(AMateria* m)
 
 	// 장착
 	slots[nextIdx] = m;
+	m->setCollectable(false);
 	nextIdx = (nextIdx == 3) ? nextIdx : nextIdx + 1;
 }
 void Character::unequip(int idx)

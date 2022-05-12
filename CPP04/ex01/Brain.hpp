@@ -13,8 +13,6 @@ public:
 	Brain(const Brain& a);				// 복사생성자
 	Brain& operator=(const Brain& a);	// 대입연산자
 	~Brain();							// 소멸자
-
-
 };
 
 

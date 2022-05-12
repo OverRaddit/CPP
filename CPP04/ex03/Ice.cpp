@@ -20,7 +20,7 @@ Ice::Ice(const Ice& a) : AMateria(a)
 
 Ice& Ice::operator=(const Ice& a)
 {
-	this->type = a.type;	// 사실상 의미가 없는 복사...
+	AMateria::operator=(a);
 	return *this;
 }
 

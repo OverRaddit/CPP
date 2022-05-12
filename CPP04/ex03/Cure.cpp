@@ -20,7 +20,7 @@ Cure::Cure(const Cure& a) : AMateria(a)
 
 Cure& Cure::operator=(const Cure& a)
 {
-	this->type = a.type;	// 사실상 의미가 없는 복사...
+	AMateria::operator=(a);
 	return *this;
 }
 

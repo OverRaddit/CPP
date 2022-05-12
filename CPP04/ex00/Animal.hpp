@@ -15,7 +15,7 @@ public:
 	virtual ~Animal();					// 소멸자
 
 	virtual void makeSound() const;		// 가상함수
-	std::string getType(void) const;
+	std::string getType(void) const;	// 이게 어디서 사용되지?
 };
 
 #endif

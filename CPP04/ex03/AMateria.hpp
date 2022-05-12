@@ -9,6 +9,8 @@ class AMateria
 {
 protected:
 	std::string type;
+	bool collectable;	// made by gshim
+
 public:
 	AMateria();									// 기본생성자
 	AMateria(std::string const &type);
@@ -17,9 +19,13 @@ public:
 	virtual ~AMateria();						// 소멸자
 
 	std::string const & getType(void) const;
+	bool const & getCollectable(void) const;
+	void setCollectable(bool flag);
 
 	virtual AMateria* clone(void) const = 0;	// 스킬객체복사
 	virtual void use(ICharacter& target);		// 스킬사용 -> 자식클래스에서 재정의해야 하는 함수. 애초에 왜 순수가상함수로 하지 않은건지?
+
+
 };
 
 #endif

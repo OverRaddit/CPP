@@ -2,12 +2,15 @@
 
 AMateria::AMateria()
 {
+	this->type = "AMateria";
+	this->collectable = true;
 	std::cout << "AMateria Constructor" << std::endl;
 }
 
 AMateria::AMateria(std::string const &type) : type(type)
 {
 	this->type = type;
+	this->collectable = true;
 }
 
 AMateria::AMateria(const AMateria& a)
@@ -18,6 +21,7 @@ AMateria::AMateria(const AMateria& a)
 AMateria& AMateria::operator=(const AMateria& a)
 {
 	this->type = a.type;
+	this->collectable = a.collectable;
 	return *this;
 }
 
@@ -29,6 +33,15 @@ AMateria::~AMateria()
 std::string const & AMateria::getType(void) const
 {
 	return type;
+}
+
+bool const & AMateria::getCollectable(void) const
+{
+	return collectable;
+}
+void AMateria::setCollectable(bool flag)
+{
+	collectable = flag;
 }
 
 // 순수 가상함수는 본인의 클래스에서 구현할 수 없다!
