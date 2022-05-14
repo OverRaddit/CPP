@@ -25,3 +25,13 @@ Brain::~Brain()
 {
 	std::cout << "Brain Destructor" << std::endl;
 }
+
+void Brain::say(void)
+{
+	std::cout << "====print Idea====" << std::endl;
+	for(int i=0;i<10;i++)
+	{
+		std::cout << ideas[i] << std::endl;
+	}
+	std::cout << "==================" << std::endl;
+}

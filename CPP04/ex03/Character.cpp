@@ -46,6 +46,7 @@ Character& Character::operator=(const Character& a)
 			slots[i] = NULL;
 		}
 	}
+	// 굳이 복사할 필요 없을듯!
 	for(int i=0;i<100;i++)
 	{
 		if (garbage[i])
@@ -75,6 +76,8 @@ std::string const & Character::getName() const
 {
 	return name;
 }
+// 장착실패시 메모리릭 생각해볼것.
+// 널포인터 들어올때 처리해줄것.
 void Character::equip(AMateria* m)
 {
 	if (!m->getCollectable()) return ;	// 주울 수 없는 상태라면 return

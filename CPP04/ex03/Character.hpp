@@ -14,11 +14,18 @@ private:
 
 	AMateria*	garbage[100];
 	int			g_idx;
+protected:
 public:
 	Character();								// 기본생성자
 	Character(std::string _name);
 	Character(const Character& a);				// 복사생성자
 	Character& operator=(const Character& a);	// 대입연산자
+
+	int	get_Gidx(void)
+	{
+		return g_idx;
+	}
+
 
 	virtual ~Character();						// 소멸자
 	virtual std::string const & getName() const;

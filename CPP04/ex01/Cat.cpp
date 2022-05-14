@@ -13,9 +13,12 @@ Cat::Cat(const Cat& a) : brain(new Brain())
 
 Cat& Cat::operator=(const Cat& a)
 {
+	// 자기자신이 들어왔을때 깊은복사문제발생
+	if (this == &a)
+		return *this;
 	this->type = a.type;
 
-	// 깊은 복사가 수행됨.
+	// Deep copy
 	if (this->brain != NULL)
 		delete this->brain;
 	this->brain = new Brain(*(a.brain));
@@ -31,4 +34,9 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
 	std::cout << "Meow Meow" << std::endl;
+}
+
+Brain* Cat::getBrain(void) const
+{
+	return brain;
 }

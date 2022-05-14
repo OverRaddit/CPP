@@ -7,7 +7,7 @@
 class Cat : public Animal
 {
 private:
-	Brain* brain;
+	Brain* brain;	// 접근불가.
 public:
 	Cat();							// 기본생성자
 	Cat(const Cat& a);				// 복사생성자
@@ -15,6 +15,7 @@ public:
 	virtual ~Cat();					// 소멸자
 
 	virtual void makeSound() const;	// 가상함수
+	Brain* getBrain(void) const;
 };
 
 #endif

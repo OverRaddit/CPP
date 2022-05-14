@@ -72,4 +72,13 @@ While assigning a Materia to another, copying the type doesn't make sense.
 
 
 
-# 같은 AMateria를 여러번 equip할 수 있을까?
+# ex04 ㅌㅔ스트항목
+
+- 생성자, 소멸자 호출순서
+- equip
+	장착하려는 객체가 생성이 되는지.
+	공간이 다찼을때 처리가 되었는지.
+	이미 누가 먹은 아이템을 장착하려고 할때 처리를 하였는지
+- unequip
+	빈슬롯을 unequip할때 처리
+

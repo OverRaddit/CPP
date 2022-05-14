@@ -19,3 +19,8 @@ public:
 };
 
 #endif
+
+int main()
+{
+	Animal *ptr = new Dog();
+}

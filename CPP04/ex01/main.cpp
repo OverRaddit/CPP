@@ -12,19 +12,17 @@ int main()
 	// Create & Fill Array of Animal Object
 	Animal *arr[10];
 	for(int i=0;i<5;i++)
-	{
 		arr[i] = new Dog();
-	}
 	for(int i=5;i<10;i++)
-	{
 		arr[i] = new Cat();
-	}
 
 	// makeSound
 	for(int i=0;i<10;i++)
 	{
 		std::cout << arr[i]->getType() << ", ";
 		arr[i]->makeSound();
+		//
+		arr[i]->g
 	}
 
 	// Delete Array

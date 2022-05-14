@@ -13,9 +13,11 @@ Dog::Dog(const Dog& a) : brain(new Brain())
 
 Dog& Dog::operator=(const Dog& a)
 {
+	if (this == &a)
+		return *this;
 	this->type = a.type;
 
-	// 깊은 복사가 수행됨.
+	// Deep copy
 	if (this->brain != NULL)
 		delete this->brain;
 	this->brain = new Brain(*(a.brain));
@@ -31,4 +33,9 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
 	std::cout << "Bark Bark" << std::endl;
+}
+
+Brain* Dog::getBrain(void) const
+{
+	return brain;
 }

@@ -10,7 +10,7 @@ int main()
 
 	//std::cout << "0======" << std::endl;
 
-	src->learnMateria(new Ice());
+	src->learnMateria(new Ice());	// 2번 생성됨.
 	src->learnMateria(new Cure());
 
 	//std::cout << "1======" << std::endl;
@@ -24,15 +24,26 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
 	me->unequip(0);
 	std::cout << "3======" << std::endl;
 
 	ICharacter* bob = new Character("bob");
+	ICharacter* gshim = new Character("gshim");
 
 	//std::cout << "4======" << std::endl;
 
-	me->use(0, *bob);
-	me->use(1, *bob);
+	//me->use(0, *bob);
+	me->use(1, *gshim);
 
 	std::cout << "5======" << std::endl;
 

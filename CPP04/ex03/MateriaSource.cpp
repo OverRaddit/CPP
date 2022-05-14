@@ -13,6 +13,7 @@ MateriaSource::MateriaSource(const MateriaSource& a)
 }
 MateriaSource& MateriaSource::operator=(const MateriaSource& a)
 {
+	// 기존 memory 할당해제 안해줌.
 	for(int i=0;i<4;i++)
 		memory[i] = a.memory[i]->clone();
 	nextIdx = a.nextIdx;
@@ -43,7 +44,7 @@ void MateriaSource::learnMateria(AMateria* a)
 	else
 		return ;
 	memory[nextIdx] = tmp;
-	nextIdx = (nextIdx + 1) % 4;
+	nextIdx = (nextIdx + 1) % 4;	//의미없는 코드
 }
 
 // memory에서 type에 해당하는 객체가 존재하는지 찾아 반환한다.
