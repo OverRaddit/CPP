@@ -6,7 +6,7 @@ Cat::Cat() : brain(new Brain())
 	std::cout << "Cat Constructor" << std::endl;
 }
 
-Cat::Cat(const Cat& a) : brain(new Brain())
+Cat::Cat(const Cat& a) : brain(new Brain(*a.getBrain()))
 {
 	*this = a;
 }
@@ -31,4 +31,9 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
 	std::cout << "Meow Meow" << std::endl;
+}
+
+Brain* Cat::getBrain(void) const
+{
+	return brain;
 }

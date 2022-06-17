@@ -15,6 +15,7 @@ public:
 	virtual ~Dog();					// 소멸자
 
 	virtual void makeSound() const;	// 가상함수
+	Brain* getBrain(void) const;
 };
 
 #endif

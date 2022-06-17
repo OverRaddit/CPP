@@ -6,8 +6,9 @@ Dog::Dog() : brain(new Brain())
 	std::cout << "Dog Constructor" << std::endl;
 }
 
-Dog::Dog(const Dog& a) : brain(new Brain())
+Dog::Dog(const Dog& a) : brain(new Brain(*a.getBrain()))
 {
+	std::cout << "Dog Copy Constructor" << std::endl;
 	*this = a;
 }
 

@@ -12,10 +12,10 @@ public:
 	Ice(std::string const &type);
 	Ice(const Ice& a);						// 복사생성자
 	Ice& operator=(const Ice& a);			// 대입연산자
-	virtual ~Ice();							// 소멸자	// 가상함수로?
+	virtual ~Ice();							// 소멸자
 
 	virtual AMateria* clone() const;		// 순수가상함수 구현
-	virtual void use(ICharacter& target);
+	virtual void use(ICharacter& target);	// 순수가상함수 구현
 };
 
 #endif

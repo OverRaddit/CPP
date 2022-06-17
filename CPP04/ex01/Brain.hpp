@@ -15,6 +15,7 @@ public:
 	~Brain();							// 소멸자
 
 	void say(void);
+	void meditation(void);
 };
 
 

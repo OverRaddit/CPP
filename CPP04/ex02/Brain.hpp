@@ -14,7 +14,9 @@ public:
 	Brain& operator=(const Brain& a);	// 대입연산자
 	~Brain();							// 소멸자
 
-
+	// for test
+	void say(void);
+	void meditation(void);
 };
 
 

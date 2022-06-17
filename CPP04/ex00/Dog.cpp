@@ -8,6 +8,7 @@ Dog::Dog()
 
 Dog::Dog(const Dog& a)
 {
+	std::cout << "Dog Copy Constructor" << std::endl;
 	*this = a;
 }
 

@@ -22,8 +22,12 @@ Character::Character(const Character& a)
 {
 	*this = a;
 }
+
 Character& Character::operator=(const Character& a)
 {
+	if (this == &a)
+		return *this;
+
 	name = a.name;
 	for(int i=0;i<4;i++)
 	{
@@ -33,27 +37,20 @@ Character& Character::operator=(const Character& a)
 		slots[i] = NULL;
 
 		// a의 AMateria를 복제하여 저장한다.
-		// new Ice()를 clone() 함수로 바꿔야 하나?
 		if (a.slots[i] == NULL)
-			slots[i] = NULL;
-		else if (a.slots[i]->getType() == "ice")
-			slots[i] = new Ice();
-		else if (a.slots[i]->getType() == "cure")
-			slots[i] = new Cure();
-		else	// 이 경우가 존재 가능...?
-		{
-			std::cout << "ERROR" << std::endl;
-			slots[i] = NULL;
-		}
+			continue;
+		else
+			a.slots[i]->clone();
 	}
 	// 굳이 복사할 필요 없을듯!
-	for(int i=0;i<100;i++)
-	{
-		if (garbage[i])
-			delete garbage[i];
-		garbage[i] = a.garbage[i];
-	}
-	g_idx = a.g_idx;
+	// Garbage는 복사하지 않는다고 정
+	// for(int i=0;i<100;i++)
+	// {
+	// 	if (garbage[i])
+	// 		delete garbage[i];
+	// 	garbage[i] = a.garbage[i];
+	// }
+	// g_idx = a.g_idx;
 	return *this;
 }
 Character::~Character()
@@ -80,7 +77,10 @@ std::string const & Character::getName() const
 // 널포인터 들어올때 처리해줄것.
 void Character::equip(AMateria* m)
 {
-	if (!m->getCollectable()) return ;	// 주울 수 없는 상태라면 return
+	if (!m->getCollectable()){
+		std::cout << "That Materia is already collected by other" << std::endl;
+		return ;	// 주울 수 없는 상태라면 return
+	}
 	int nextIdx = getNextIdx();
 	if (nextIdx == -1)
 	{
@@ -95,8 +95,14 @@ void Character::equip(AMateria* m)
 }
 void Character::unequip(int idx)
 {
-	if (idx < 0 || idx > 3) return;		// idx 범위오류
-	if (slots[idx] == NULL) return;		// 빈슬롯을 equip -> do nothing
+	if (idx < 0 || idx > 3){
+		std::cout << "idx is out of boundary" << std::endl;
+		return;		// idx 범위오류
+	}
+	if (slots[idx] == NULL) {
+		std::cout << "that slot is empty dude" << std::endl;
+		return;		// 빈슬롯을 equip -> do nothing
+	}
 
 	// 휴지통 저장
 	if (garbage[g_idx] != NULL)
@@ -109,8 +115,14 @@ void Character::unequip(int idx)
 }
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx > 3) return;		// idx 범위오류
-	if (slots[idx] == NULL) return;		// 빈슬롯을 사용
+	if (idx < 0 || idx > 3){
+		std::cout << "idx is out of boundary" << std::endl;
+		return;		// idx 범위오류
+	}
+	if (slots[idx] == NULL){
+		std::cout << "that slot is empty dude" << std::endl;
+		return;		// 빈슬롯을 사용
+	}
 
 	slots[idx]->use(target);
 }

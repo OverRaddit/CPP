@@ -1,9 +1,9 @@
-//#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
+
 #include <iostream>
 
+//#include "Animal.hpp"
 // int main() {
 // 	const Animal* meta = new Animal();
 
@@ -19,8 +19,15 @@
 
 // 	std::cout << "==================" << std::endl;
 // 	Dog A;
+// 	Dog A2 = A;	// 초기화할때의 대입연산은 복사생성자를 호출한다.
+// 	Dog A3;
+// 	A3 = A;		// 그 외의 경우에는 오버로딩한 대입연산자를 호출한다.
+// 	Dog A4(A3);
 // 	Cat B;
 // 	A.makeSound();
+// 	A2.makeSound();
+// 	A3.makeSound();
+// 	A4.makeSound();
 // 	B.makeSound();
 // 	std::cout << "==================" << std::endl;
 
@@ -31,18 +38,15 @@
 // 	return 0;
 // }
 
-int main() {
-	// WRONG VERSION
-	const WrongAnimal* meta = new WrongAnimal();
+// #include "WrongCat.hpp"
+// int main() {
+// 	// WRONG VERSION
+// 	const WrongAnimal* meta = new WrongAnimal();
 
-	//const Animal* j = new Dog();
-	const WrongAnimal* i = new WrongCat();
+// 	const WrongAnimal* i = new WrongCat();
 
-	//std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+// 	std::cout << i->getType() << " " << std::endl;
 
-	i->makeSound(); //will output the cat sound!
-	//j->makeSound();
-	meta->makeSound();
-	//meta->special();	// there's no special function in WrongAnimal
-}
+// 	i->makeSound(); //will output the cat sound!
+// 	meta->makeSound();
+// }

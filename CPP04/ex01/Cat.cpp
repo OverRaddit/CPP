@@ -6,8 +6,9 @@ Cat::Cat() : brain(new Brain())
 	std::cout << "Cat Constructor" << std::endl;
 }
 
-Cat::Cat(const Cat& a) : brain(new Brain())
+Cat::Cat(const Cat& a) : brain(new Brain(*a.getBrain()))
 {
+	std::cout << "Cat Copy Constructor" << std::endl;
 	*this = a;
 }
 

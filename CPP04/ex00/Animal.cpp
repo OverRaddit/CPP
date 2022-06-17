@@ -1,13 +1,13 @@
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal() : type("annonymous")
 {
-	type = "annonymous";
 	std::cout << "Animal Constructor" << std::endl;
 }
 
 Animal::Animal(const Animal& a)
 {
+	std::cout << "Animal Copy Constructor" << std::endl;
 	*this = a;
 }
 

@@ -7,7 +7,7 @@
 class Cat : public Animal
 {
 private:
-	Brain* brain;	// 접근불가.
+	Brain* brain;					// 접근불가.
 public:
 	Cat();							// 기본생성자
 	Cat(const Cat& a);				// 복사생성자

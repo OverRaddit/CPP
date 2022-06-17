@@ -8,6 +8,7 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(const WrongAnimal& a)
 {
+	std::cout << "WrongAnimal Copy Constructor" << std::endl;
 	*this = a;
 }
 

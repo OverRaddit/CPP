@@ -8,6 +8,7 @@ Animal::Animal()
 
 Animal::Animal(const Animal& a)
 {
+	std::cout << "Animal Copy Constructor" << std::endl;
 	*this = a;
 }
 

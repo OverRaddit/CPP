@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include "Brain.hpp"
 
 class Animal
 {
@@ -15,12 +16,8 @@ public:
 	virtual ~Animal();					// 소멸자
 
 	virtual void makeSound() const = 0;
+	virtual Brain* getBrain(void) const = 0;// ㅌㅔ스트용
 	std::string getType(void) const;
 };
 
 #endif
-
-int main()
-{
-	Animal *ptr = new Dog();
-}

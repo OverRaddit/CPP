@@ -2,13 +2,14 @@
 
 Brain::Brain()
 {
-	for(int i=0;i<100;i++)
-		ideas[i] = "I'm thinking!!";
 	std::cout << "Brain Constructor" << std::endl;
+	for(int i=0;i<100;i++)
+		ideas[i] = "I'm thinking: ";
 }
 
 Brain::Brain(const Brain& a)
 {
+	std::cout << "Brain Copy Constructor" << std::endl;
 	*this = a;
 }
 
@@ -34,4 +35,13 @@ void Brain::say(void)
 		std::cout << ideas[i] << std::endl;
 	}
 	std::cout << "==================" << std::endl;
+}
+
+void Brain::meditation(void)
+{
+	for(int i=0;i<100;i++)
+	{
+		this->ideas[i] = "Inner Peace..";
+	}
+	std::cout << "Meditaion..." << std::endl;
 }
