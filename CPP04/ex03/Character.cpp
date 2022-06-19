@@ -55,52 +55,57 @@ Character& Character::operator=(const Character& a)
 }
 Character::~Character()
 {
+	std::cout << "Character Destructor" << std::endl;
 	for(int i=0;i<4;i++)
 	{
 		if (slots[i])	// NULL이 아닐때
 		{
-			std::cout << "DELETE" << std::endl;
+			std::cout << "Erasing " << name << "'s item " << slots[i]->getType() << std::endl;
 			delete slots[i];	// 왜 AMateria의 소멸자가 호출되지 않는지?
 		}
-
 	}
 	for(int i=0;i<100;i++)
 		if (garbage[i])
 			delete garbage[i];
-	std::cout << "Character Destructor" << std::endl;
 }
 std::string const & Character::getName() const
 {
 	return name;
 }
+
 // 장착실패시 메모리릭 생각해볼것.
 // 널포인터 들어올때 처리해줄것.
 void Character::equip(AMateria* m)
 {
+	if (!m)
+		return ;
 	if (!m->getCollectable()){
-		std::cout << "That Materia is already collected by other" << std::endl;
+		std::cout << "[ERROR]That Materia is already collected by other" << std::endl;
 		return ;	// 주울 수 없는 상태라면 return
 	}
 	int nextIdx = getNextIdx();
 	if (nextIdx == -1)
 	{
-		std::cout << "There's no more space in Inventory" << std::endl;
+		std::cout << "[ERROR]There's no more space in Inventory" << std::endl;
+		delete m;	// [1]
 		return ;
 	}
 
 	// 장착
+	std::cout << "Equip Item " << m->getType() << " to " << name << std::endl;
 	slots[nextIdx] = m;
 	m->setCollectable(false);
 	nextIdx = (nextIdx == 3) ? nextIdx : nextIdx + 1;
+
 }
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3){
-		std::cout << "idx is out of boundary" << std::endl;
+		std::cout << "[ERROR]idx is out of boundary" << std::endl;
 		return;		// idx 범위오류
 	}
 	if (slots[idx] == NULL) {
-		std::cout << "that slot is empty dude" << std::endl;
+		std::cout << "[ERROR]that slot is empty dude" << std::endl;
 		return;		// 빈슬롯을 equip -> do nothing
 	}
 
@@ -116,11 +121,11 @@ void Character::unequip(int idx)
 void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx > 3){
-		std::cout << "idx is out of boundary" << std::endl;
+		std::cout << "[ERROR]idx is out of boundary" << std::endl;
 		return;		// idx 범위오류
 	}
 	if (slots[idx] == NULL){
-		std::cout << "that slot is empty dude" << std::endl;
+		std::cout << "[ERROR]that slot is empty dude" << std::endl;
 		return;		// 빈슬롯을 사용
 	}
 

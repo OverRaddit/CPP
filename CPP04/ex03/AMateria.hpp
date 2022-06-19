@@ -19,7 +19,7 @@ public:
 	virtual ~AMateria();						// 소멸자
 
 	std::string const & getType(void) const;
-	bool const & getCollectable(void) const;	// made by gshim
+	bool getCollectable(void) const;			// made by gshim
 	void setCollectable(bool flag);				// made by gshim
 
 	virtual AMateria* clone(void) const = 0;	// 스킬객체복사

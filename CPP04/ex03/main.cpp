@@ -6,56 +6,46 @@
 
 int main()
 {
+	// 선언부
+	std::cout << "Declaration" << std::endl;
 	IMateriaSource* src = new MateriaSource();
-
-	//std::cout << "0======" << std::endl;
-
-	src->learnMateria(new Ice());	// 2번 생성됨.
-	src->learnMateria(new Cure());
-
-	//std::cout << "1======" << std::endl;
-
 	ICharacter* me = new Character("me");
+	std::cout << std::endl;
 
-	std::cout << "2======" << std::endl;
+	// learn
+	std::cout << "Learn" << std::endl;
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	std::cout << std::endl;
 
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	// create
+	std::cout << "Create" << std::endl;
+	// AMateria* tmp;
+	// tmp = src->createMateria("ice");
+	// std::cout << tmp->getType() << std::endl;
+	// delete tmp;
+	me->equip(src->createMateria("cure"));
+	me->equip(src->createMateria("ice"));
+	me->equip(src->createMateria("cure"));
+	me->equip(src->createMateria("ice"));
 
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
 
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-
-	me->unequip(0);
-	std::cout << "3======" << std::endl;
+	//me->unequip(0);
 
 	ICharacter* bob = new Character("bob");
 	ICharacter* gshim = new Character("gshim");
 
-	//std::cout << "4======" << std::endl;
-
-	//me->use(0, *bob);
+	me->use(0, *bob);
 	me->use(1, *gshim);
+	std::cout << std::endl;
 
-	std::cout << "5======" << std::endl;
-
+	// delete
 	delete bob;
-	std::cout << "6======" << std::endl;
-
 	delete me;
-	std::cout << "7======" << std::endl;
-
+	std::cout << std::endl;
 	delete src;
-	std::cout << "8======" << std::endl;
-
+	std::cout << std::endl;
+	std::cout << "END" << std::endl;
 	return 0;
 }
 

@@ -36,10 +36,12 @@ void MateriaSource::learnMateria(AMateria* a)
 	if (nextIdx > 3)
 	{
 		std::cout << "No more space left!" << std::endl;
+		delete a; // [2]
 		return ;
 	}
-	memory[nextIdx] = a->clone();
-	//nextIdx = (nextIdx + 1) % 4;	//의미없는 코드
+	//memory[nextIdx++] = a->clone();
+
+	memory[nextIdx++] = a; // [2]
 }
 
 // memory에서 type에 해당하는 객체가 존재하는지 찾아 반환한다.
@@ -51,10 +53,11 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	ret = 0;
 	for(int i=0;i<4;i++)
 	{
-		if (memory[i] != NULL)
+		if (memory[i] == NULL)
 			break;
 		if (memory[i]->getType() == type)
 			return memory[i]->clone();
 	}
+	std::cout << "There's no Materia that you want!" << std::endl;
 	return (ret);
 }

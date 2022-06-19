@@ -38,6 +38,7 @@ clone() will return a new instance of the same type
 AMateria* Ice::clone() const
 {
 	AMateria *ret = new Ice(*this);
+
 	return ret;
 }
 

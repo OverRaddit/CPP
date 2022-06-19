@@ -13,7 +13,7 @@ private:
 	/* data */
 public:
 
-	virtual int	get_Gidx(void) = 0;						// mamde by gshim
+	//virtual int	get_Gidx(void) = 0;						// mamde by gshim
 
 	virtual ~ICharacter() {}
 	virtual std::string const & getName() const = 0;

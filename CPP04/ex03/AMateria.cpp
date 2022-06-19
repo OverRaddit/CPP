@@ -35,7 +35,7 @@ std::string const & AMateria::getType(void) const
 	return type;
 }
 
-bool const & AMateria::getCollectable(void) const
+bool AMateria::getCollectable(void) const
 {
 	return collectable;
 }
