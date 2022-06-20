@@ -150,4 +150,14 @@ new로 생성한 동적객체 자체임을 알 수 있다.
 ㅍㅕㅇ가이후 느느낀낀점점
 
 - ex03 Character 깊은복사 안되는거같은데...?
+	ㅇㅐ초에 두 캐릭터를 포인터로 받고있어서 복사 자체를 수행하지 않았음;;
+	그러면
+	ICharacter *me;
+	ICharacter *copyman;
+	이 둘을 가지고 Character의 복사생성자를 만들 수 있나...?
+	그냥 Character* 형으로 만들어서 깊은복사 이루어지게 했음.
+	if(!a.slots[i]) -> if(a.slots[i])
+	로 바꿈..
+
 - ex03 virtual 상속이 왜있지?
+	모르겠다. 필요없는 것 같다. 그냥 빼자.

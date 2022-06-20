@@ -4,12 +4,60 @@
 #include "Cure.hpp"
 #include "Character.hpp"
 
+// int main()
+// {
+// 	// 선언부
+// 	std::cout << "Declaration" << std::endl;
+// 	IMateriaSource* src = new MateriaSource();
+// 	ICharacter* me = new Character("me");
+// 	std::cout << std::endl;
+
+// 	// learn
+// 	std::cout << "Learn" << std::endl;
+// 	src->learnMateria(new Ice());
+// 	src->learnMateria(new Cure());
+// 	std::cout << std::endl;
+
+// 	// create
+// 	std::cout << "Create" << std::endl;
+// 	// AMateria* tmp;
+// 	// tmp = src->createMateria("ice");
+// 	// std::cout << tmp->getType() << std::endl;
+// 	// delete tmp;
+// 	me->equip(src->createMateria("cure"));
+// 	me->equip(src->createMateria("ice"));
+// 	me->equip(src->createMateria("cure"));
+// 	me->equip(src->createMateria("ice"));
+
+
+// 	//me->unequip(0);
+
+// 	ICharacter* bob = new Character("bob");
+// 	ICharacter* gshim = new Character("gshim");
+
+// 	me->use(0, *bob);
+// 	me->use(1, *gshim);
+
+// 	// character deep copy check
+// 	me->unequip(0);
+// 	me->unequip(1);
+
+// 	// delete
+// 	delete bob;
+// 	delete me;
+// 	std::cout << std::endl;
+// 	delete src;
+// 	std::cout << std::endl;
+// 	std::cout << "END" << std::endl;
+// 	return 0;
+// }
+
 int main()
 {
 	// 선언부
 	std::cout << "Declaration" << std::endl;
 	IMateriaSource* src = new MateriaSource();
-	ICharacter* me = new Character("me");
+	Character* me = new Character("me");
 	std::cout << std::endl;
 
 	// learn
@@ -20,10 +68,6 @@ int main()
 
 	// create
 	std::cout << "Create" << std::endl;
-	// AMateria* tmp;
-	// tmp = src->createMateria("ice");
-	// std::cout << tmp->getType() << std::endl;
-	// delete tmp;
 	me->equip(src->createMateria("cure"));
 	me->equip(src->createMateria("ice"));
 	me->equip(src->createMateria("cure"));
@@ -34,16 +78,17 @@ int main()
 
 	ICharacter* bob = new Character("bob");
 	ICharacter* gshim = new Character("gshim");
-	ICharacter* copyman = me;
+	Character* copyman = new Character(*me);
 
 	me->use(0, *bob);
 	me->use(1, *gshim);
 
 	// character deep copy check
 	me->unequip(0);
+	me->unequip(1);
+
 	copyman->use(0, *bob);
 	copyman->use(1, *gshim);
-	std::cout << std::endl;
 
 	// delete
 	delete bob;

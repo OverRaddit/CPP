@@ -6,7 +6,8 @@
 # include "Ice.hpp"
 # include "Cure.hpp"
 
-class MateriaSource : virtual public IMateriaSource
+//class MateriaSource : virtual public IMateriaSource
+class MateriaSource : public IMateriaSource
 {
 private:
 	AMateria*	memory[4];

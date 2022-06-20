@@ -20,6 +20,7 @@ Character::Character(std::string _name) : name(_name), g_idx(0)
 
 Character::Character(const Character& a)
 {
+	std::cout << "[DEBUG]copy constructor" << std::endl;
 	*this = a;
 }
 
@@ -35,12 +36,12 @@ Character& Character::operator=(const Character& a)
 		if (slots[i])
 			delete slots[i];
 		slots[i] = NULL;
-
 		// a의 AMateria를 복제하여 저장한다.
-		if (a.slots[i] == NULL)
-			continue;
-		else
-			a.slots[i]->clone();
+		if (a.slots[i])
+		{
+			std::cout << "copying.. " << a.slots[i]->getType() << std::endl;
+			slots[i] = a.slots[i]->clone();
+		}
 	}
 	// 굳이 복사할 필요 없을듯!
 	// Garbage는 복사하지 않는다고 정

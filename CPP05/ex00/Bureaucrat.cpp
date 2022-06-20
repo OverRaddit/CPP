@@ -41,3 +41,13 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& a)
 }
 const std::string Bureaucrat::getName(void) const {return name;}
 const int Bureaucrat::getGrade(void) const {return grade;}
+
+void IncrementGrade(int _grade)
+{
+	//if (grade + _grade )
+}
+
+void DecrementGrade(int _grade)
+{
+
+}
