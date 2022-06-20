@@ -34,9 +34,15 @@ int main()
 
 	ICharacter* bob = new Character("bob");
 	ICharacter* gshim = new Character("gshim");
+	ICharacter* copyman = me;
 
 	me->use(0, *bob);
 	me->use(1, *gshim);
+
+	// character deep copy check
+	me->unequip(0);
+	copyman->use(0, *bob);
+	copyman->use(1, *gshim);
 	std::cout << std::endl;
 
 	// delete
@@ -74,8 +80,8 @@ int main()
 // 	delete me;
 // 	delete src;
 
-// 	while(1)
-// 	;
+// 	// while(1)
+// 	// ;
 
 // 	return 0;
 // }
