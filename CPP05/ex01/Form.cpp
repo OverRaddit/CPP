@@ -27,7 +27,6 @@ void Form::beSigned(Bureaucrat b)
 	{
 		std::cerr << "[ERROR]in beSigned() " << e.what() << '\n';
 		b.signForm(name, sign, e);
-
 	}
 }
 
