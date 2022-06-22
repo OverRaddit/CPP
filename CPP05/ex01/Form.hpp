@@ -5,6 +5,8 @@
 # include <string>
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 private:
@@ -31,16 +33,15 @@ public:
 //=============================================================================
 //	Getter
 //=============================================================================
-	std::string getName();
-	bool getSign();
-	int getSRequired();
-	int getERequired();
+	std::string getName() const;
+	bool getSign() const;
+	int getSRequired() const;
+	int getERequired() const;
 
 //=============================================================================
 //	method
 //=============================================================================
 	void beSigned(Bureaucrat b);	// 공무원의 등급이 적절하다면 서명한다.
-	void print_info();
 
 
 //=============================================================================

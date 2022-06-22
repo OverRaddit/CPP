@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/06/21 19:51:20 by gshim            ###   ########.fr        #
+#    Updated: 2022/06/22 22:20:13 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ CDEBUG		=	-g -fsanitize=address
 NAME		=	Bureaucrat
 SRCS_DIR	=	./
 SRC_LIST	=	Bureaucrat.cpp				\
+				Form.cpp					\
 				main.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))

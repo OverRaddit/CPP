@@ -6,7 +6,9 @@
 # include <iomanip>
 # include <exception>
 
-class Bureaucrat //: public exception
+# include "Form.hpp"
+
+class Bureaucrat
 {
 private:
 	const std::string name;
@@ -38,17 +40,8 @@ public:
 	void IncrementGrade(int _grade) throw (GradeTooHighException, GradeTooLowException);
 	void DecrementGrade(int _grade) throw (GradeTooHighException, GradeTooLowException);
 
-	void signForm(Bureaucrat b);
-	// <bureaucrat> signed <form>
-	// <bureaucrat> couldn’t sign <form> because <reason>.
+	void signForm(Form &ref) throw (GradeTooHighException, GradeTooLowException);
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& a);	// 출력연산자
+
 #endif
-
-
-/*
-Remember. Since grade 1 is the highest one and 150 the lowest,
-incrementing a grade 3 should give a grade 2 to the bureaucrat.
-
-이게 무슨말이야...?
-*/

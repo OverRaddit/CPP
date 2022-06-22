@@ -5,35 +5,28 @@ int main()
 {
 	try
 	{
-		Bureaucrat A("gshim", 10);
-		// 유효하지 않은 grade로 생성자 호출
-		Bureaucrat B("Mr.0", 0);
-		Bureaucrat C("Minus", 1500);
+		Bureaucrat A("gshim", 11);
+		Form f("First", 10, 5);
 		std::cout << std::endl;
 
 		//표준출력
 		std::cout << A << std::endl;
-		std::cout << B << std::endl;
-		std::cout << C << std::endl;
+		std::cout << f << std::endl;
 		std::cout << std::endl;
 
- 		// 유효범위보다 큰 grade로 증감연산
-		A.IncrementGrade(11);
-		A.IncrementGrade(10);
-		A.DecrementGrade(141);
 
-		A.IncrementGrade(9);	// A's grade 10 -> 1
-		//A.DecrementGrade(-9);
-
+		// 자격 없이 서명하기
+		A.signForm(f);
 		std::cout << std::endl;
 
- 		// 유효범위보다 작은 grade로 차감연산
-		//A.DecrementGrade(150);
+		// 자격 가지고 서명하기
+		A.IncrementGrade(1);
+		A.signForm(f);
+		std::cout << std::endl;
 
 		//표준출력
 		std::cout << A << std::endl;
-		std::cout << B << std::endl;
-		std::cout << C << std::endl;
+		std::cout << f << std::endl;
 		std::cout << std::endl;
 
 	}
