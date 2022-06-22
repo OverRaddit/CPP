@@ -98,6 +98,29 @@ void Bureaucrat::DecrementGrade(int _grade)
 
 }
 
+// 이게 뭐하는 함수인지 잘 모르겠다
+void Bureaucrat::signForm(std::string f_name, bool sign, std::exception &e)
+{
+	try
+	{
+		if (sign)
+		{
+			std::cout << name << " signed " << f_name << std::endl;
+		}
+		else
+		{
+			std::cout << name << " couldn't sign " << f_name;
+			std::cout << " because "<< std::endl;
+		}
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << "[ERROR]in beSigned() " << e.what() << '\n';
+	}
+}
+// <bureaucrat> signed <form>
+// <bureaucrat> couldn’t sign <form> because <reason>.
+
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& a)
 {
 	// [<name>, bureaucrat grade <grade>.]

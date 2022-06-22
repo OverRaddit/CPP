@@ -37,6 +37,10 @@ public:
 	int getGrade(void) const;
 	void IncrementGrade(int _grade) throw (GradeTooHighException, GradeTooLowException);
 	void DecrementGrade(int _grade) throw (GradeTooHighException, GradeTooLowException);
+
+	void signForm(Bureaucrat b);
+	// <bureaucrat> signed <form>
+	// <bureaucrat> couldn’t sign <form> because <reason>.
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& a);	// 출력연산자
 #endif
