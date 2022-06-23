@@ -1,5 +1,8 @@
 #include "Bureaucrat.hpp"
 
+//=============================================================================
+//	Inner Class
+//=============================================================================
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw(){};
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw(){};
@@ -14,13 +17,16 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "GradeTooLow!!";
 };
 
+//=============================================================================
+//	Orthodox Canonical Form
+//=============================================================================
+
 Bureaucrat::Bureaucrat() : name("Annonymous")
 {
 	std::cout << "Bureaucrat Constructor" << std::endl;
 	grade = DEFAULT_GRADE;
 }
 
-// [4]
 Bureaucrat::Bureaucrat(std::string _name, int _grade)
 	throw (GradeTooHighException, GradeTooLowException)
 	: name(_name)
@@ -29,7 +35,7 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade)
 	{
 		std::cout << "Bureaucrat(name, grade) Constructor" << std::endl;
 		if (_grade < 1)
-			throw GradeTooHighException();	// [3]
+			throw GradeTooHighException();
 		else if (_grade > 150)
 			throw GradeTooLowException();
 		else
@@ -53,11 +59,20 @@ Bureaucrat::Bureaucrat(const Bureaucrat& a) : name(a.name), grade(a.grade)
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& a)
 {
 	grade = a.grade;
-	(*(const_cast<std::string *>(&name))) = a.getName();
+	//name = a.name;	// const라서 바꿀수가 없군..
 	return *this;
 }
+
+//=============================================================================
+//	Getter
+//=============================================================================
+
 std::string Bureaucrat::getName(void) const {return name;}
 int Bureaucrat::getGrade(void) const {return grade;}
+
+//=============================================================================
+//	method
+//=============================================================================
 
 void Bureaucrat::IncrementGrade(int _grade)
 	throw (GradeTooHighException, GradeTooLowException)
@@ -97,6 +112,40 @@ void Bureaucrat::DecrementGrade(int _grade)
 	}
 
 }
+
+// 사인을 하고 결과에 관한 문자열을 출력한다.
+void Bureaucrat::signForm(Form &ref)
+	throw (GradeTooHighException, GradeTooLowException)
+{
+	try
+	{
+		ref.beSigned(*this);
+		std::cout << name << " signed " << ref.getName() << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		std::cout << name << " couldn't sign " << ref.getName();
+		std::cout << " because "<< e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(Form const & form)
+{
+	try
+	{
+		form.beExecuted(*this);
+		std::cout << name << " executed " << form.getName() << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		std::cout << name << " couldn't executed " << form.getName();
+		std::cout << " because "<< e.what() << std::endl;
+	}
+}
+
+//=============================================================================
+//	ETC...
+//=============================================================================
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& a)
 {

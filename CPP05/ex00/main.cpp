@@ -9,7 +9,14 @@ int main()
 		// 유효하지 않은 grade로 생성자 호출
 		Bureaucrat B("Mr.0", 0);
 		Bureaucrat C("Minus", 1500);
-		std::cout << std::endl;
+
+		// 복사
+		// std::cout << "A"<< A << std::endl;
+		// std::cout << "B"<< B << std::endl;
+		// A = B;
+		// std::cout << "A"<< A << std::endl;
+		// std::cout << "B"<< B << std::endl;
+		// std::cout << std::endl;
 
 		//표준출력
 		std::cout << A << std::endl;
@@ -23,7 +30,7 @@ int main()
 		A.DecrementGrade(141);
 
 		A.IncrementGrade(9);	// A's grade 10 -> 1
-		//A.DecrementGrade(-9);
+		//A.DecrementGrade(-9);	// 둘은 다른함수에서 완벽히 동일한 연산을 수행한다.
 
 		std::cout << std::endl;
 

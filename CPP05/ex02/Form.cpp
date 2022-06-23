@@ -7,6 +7,7 @@
 Form::GradeTooHighException::~GradeTooHighException() throw(){};
 Form::GradeTooLowException::~GradeTooLowException() throw(){};
 Form::DoubleSignException::~DoubleSignException() throw(){};
+Form::NoSignException::~NoSignException() throw(){};
 
 const char* Form::GradeTooHighException::what() const throw()
 {return "GradeTooHighException";}
@@ -17,21 +18,23 @@ const char* Form::GradeTooLowException::what() const throw()
 const char* Form::DoubleSignException::what() const throw()
 {return "DoubleSignException";}
 
+const char* Form::NoSignException::what() const throw()
+{return "NoSignException";}
+
 //=============================================================================
 //	Getter
 //=============================================================================
-std::string Form::getName()const {return name;}
-bool Form::getSign()const {return sign;}
-int Form::getSRequired()const {return sign_required;}
-int Form::getERequired()const {return execute_required;}
+std::string Form::getName() const {return name;}
+bool Form::getSign() const {return sign;}
+int Form::getSRequired() const {return sign_required;}
+int Form::getERequired() const {return execute_required;}
+std::string Form::getTarget() const {return target;}
 
 //=============================================================================
 //	method
 //=============================================================================
 
-// 서명을 하고 서명 할 수 없으면 예외데이터를 던진다.
-// 여기서 b가 스택에 생성되는데 이 함수가 종료될때 b가 삭제되니 그때도 소멸자가 호출된다.
-void Form::beSigned(Bureaucrat& b)
+bool Form::isSignable(Bureaucrat& b) const
 	throw (DoubleSignException, GradeTooLowException)
 {
 	if (sign)
@@ -39,8 +42,35 @@ void Form::beSigned(Bureaucrat& b)
 	else if (sign_required < b.getGrade())
 		throw GradeTooLowException();
 	else
+		return true;
+}
+bool Form::isExecutable(Bureaucrat& b) const
+	throw (NoSignException, GradeTooLowException)
+{
+	if (!sign)
+		throw NoSignException();
+	else if (execute_required < b.getGrade())
+		throw GradeTooLowException();
+	else
+		return true;
+}
+
+void Form::beSigned(Bureaucrat& b)
+	throw (DoubleSignException, GradeTooLowException)
+{
+	if (isSignable(b))
 	{
 		sign = true;
+	}
+}
+
+void Form::beExecuted(Bureaucrat& b) const
+	throw (NoSignException, GradeTooLowException)
+{
+
+	if (isExecutable(b))
+	{
+		execute(b);
 	}
 }
 
@@ -50,10 +80,12 @@ void Form::beSigned(Bureaucrat& b)
 
 Form::Form()
 	: name("annonymous"), sign(false), sign_required(20), execute_required(10)
+		, target("none")
 {}
 
-Form::Form(std::string _name, int sign, int execute)
+Form::Form(std::string _name, int sign, int execute, std::string target)
 	: name(_name), sign(false), sign_required(sign), execute_required(execute)
+		, target(target)
 {}
 
 Form::Form(const Form& a) : name(a.name), sign(a.sign), sign_required(a.sign_required), execute_required(a.execute_required)
@@ -69,9 +101,7 @@ Form& Form::operator=(const Form& a)
 }
 
 Form::~Form()
-{
-
-}
+{}
 
 //=============================================================================
 //	ETC...
