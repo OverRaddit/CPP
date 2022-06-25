@@ -7,11 +7,13 @@ int main()
 	{
 		Bureaucrat A("gshim", 11);
 		Form f("First", 10, 5);
+		Form f2("First", 1000, 5);
 		std::cout << std::endl;
 
 		//표준출력
 		std::cout << A << std::endl;
 		std::cout << f << std::endl;
+		std::cout << f2 << std::endl;
 		std::cout << std::endl;
 
 

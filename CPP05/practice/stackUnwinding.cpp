@@ -43,3 +43,4 @@ void SimpleFuncThree(void)
 	cout << "Three" << endl;
 	throw -1;
 }
+

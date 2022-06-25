@@ -55,7 +55,7 @@ public:
 //=============================================================================
 
 	Form();							// 기본생성자
-	Form(std::string _name, int sign, int execute);
+	Form(std::string _name, int sign, int execute) throw (GradeTooHighException, GradeTooLowException);
 	Form(const Form& a);			// 복사생성자
 	Form& operator=(const Form& a);	// 대입연산자
 	~Form();						// 소멸자

@@ -53,8 +53,22 @@ Form::Form()
 {}
 
 Form::Form(std::string _name, int sign, int execute)
+	throw (GradeTooHighException, GradeTooLowException)
 	: name(_name), sign(false), sign_required(sign), execute_required(execute)
-{}
+{
+	try
+	{
+		std::cout << "Form(name, sign, execute) Constructor" << std::endl;
+		if (sign < 1 || execute < 1)
+			throw GradeTooHighException();
+		else if (sign > 150 || execute > 150)
+			throw GradeTooLowException();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Form constructor Exception: " << e.what() << std::endl;
+	}
+}
 
 Form::Form(const Form& a) : name(a.name), sign(a.sign), sign_required(a.sign_required), execute_required(a.execute_required)
 {
