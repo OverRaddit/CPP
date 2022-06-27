@@ -40,7 +40,38 @@ public:
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& a);	// 출력연산자
 #endif
+// class gshim{
+// 	const string name;
+// 	int num;
+// 	Weapon *weapon;
+// 	int a;
+// 	int b;
 
+// 	int plus() {return a+b;}
+
+// 	// orthodox canonical form
+// 	// 생성자 malloc -> new
+// 	// 소멸자 free -> delete
+
+// 	// 복사생성자
+// 	// 대입연산자
+// 	gshim A,B;
+// 	A~~
+// 	B = A;
+// }
+
+// try{
+// 	Somefunc();
+// 	// a
+// 		throw A();
+// 	// b
+// 		throw B();
+// 	// c
+// 		throw C();
+// }
+// catch(exception e){
+
+// }
 
 /*
 Remember. Since grade 1 is the highest one and 150 the lowest,

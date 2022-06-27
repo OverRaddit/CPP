@@ -67,6 +67,7 @@ Form::Form(std::string _name, int sign, int execute)
 	catch (std::exception &e)
 	{
 		std::cerr << "Form constructor Exception: " << e.what() << std::endl;
+
 	}
 }
 

@@ -21,8 +21,8 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& a)
 }
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& a)
 {
-	(void)a;
-	// 여기서 뭘 어떻게 해야하지
+	if (this == &a)
+		return *this;
 	return *this;
 }
 PresidentialPardonForm::~PresidentialPardonForm(){}

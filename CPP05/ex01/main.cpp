@@ -7,10 +7,11 @@ int main()
 	{
 		Bureaucrat A("gshim", 11);
 		Form f("First", 10, 5);
-		Form f2("First", 1000, 5);
+		Form f2("Second", 1000, 5);
 		std::cout << std::endl;
 
 		//표준출력
+		std::cout << "Hello world!" << std::endl;
 		std::cout << A << std::endl;
 		std::cout << f << std::endl;
 		std::cout << f2 << std::endl;
@@ -23,6 +24,10 @@ int main()
 
 		// 자격 가지고 서명하기
 		A.IncrementGrade(1);
+		A.signForm(f);
+		std::cout << std::endl;
+
+		// 한번 더 서명하기
 		A.signForm(f);
 		std::cout << std::endl;
 

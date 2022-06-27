@@ -23,7 +23,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 Bureaucrat::Bureaucrat() : name("Annonymous")
 {
-	std::cout << "Bureaucrat Constructor" << std::endl;
+	//std::cout << "Bureaucrat Constructor" << std::endl;
 	grade = DEFAULT_GRADE;
 }
 
@@ -33,7 +33,7 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade)
 {
 	try
 	{
-		std::cout << "Bureaucrat(name, grade) Constructor" << std::endl;
+		//std::cout << "Bureaucrat(name, grade) Constructor" << std::endl;
 		if (_grade < 1)
 			throw GradeTooHighException();
 		else if (_grade > 150)
@@ -50,7 +50,7 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat Destructor" << std::endl;
+	//std::cout << "Bureaucrat Destructor" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& a) : name(a.name), grade(a.grade)

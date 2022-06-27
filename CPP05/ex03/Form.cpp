@@ -80,7 +80,7 @@ Form::Form(std::string _name, int sign, int execute, std::string target)
 {
 	try
 	{
-		std::cout << "Form(name, sign, execute) Constructor" << std::endl;
+		//std::cout << "Form(name, sign, execute) Constructor" << std::endl;
 		if (sign < 1 || execute < 1)
 			throw GradeTooHighException();
 		else if (sign > 150 || execute > 150)

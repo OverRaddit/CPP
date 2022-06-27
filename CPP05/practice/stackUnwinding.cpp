@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void SimpleFuncOne(void) throw ();
+void SimpleFuncOne(void);
 void SimpleFuncTwo(void);
 void SimpleFuncThree(void);
 
@@ -17,18 +17,18 @@ int main()
 	}
 	catch(char expn)
 	{
-		cout << "예외코드 : " << expn << endl;
+		cout << "1예외코드 : " << expn << endl;
 	}
 	catch(int expn)
 	{
-		cout << "예외코드 : " << expn << endl;
+		cout << "2예외코드 : " << expn << endl;
 	}
 
 	cout << "Check End" << endl;
 	return 0;
 }
 
-void SimpleFuncOne(void) throw (int)
+void SimpleFuncOne(void) //throw (int)
 {
 	cout << "One" << endl;
 	SimpleFuncTwo();
@@ -41,6 +41,6 @@ void SimpleFuncTwo(void)
 void SimpleFuncThree(void)
 {
 	cout << "Three" << endl;
-	throw -1;
+	throw 65;
 }
 

@@ -4,25 +4,25 @@
 //	Orthodox Canonical Form
 //=============================================================================
 RobotomyRequestForm::RobotomyRequestForm()
-	: Form("RobotomyRequestForm", 25, 5, "none")
+	: Form("RobotomyRequestForm", 72, 45, "none")
 {
 
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-	: Form("RobotomyRequestForm", 25, 5, target)
+	: Form("RobotomyRequestForm", 72, 45, target)
 {
 
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& a)
 {
-	(void)a;
-
+	*this = a;
 }
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& a)
 {
-	(void)a;
+	if (this == &a)
+		return *this;
 	return *this;
 }
 RobotomyRequestForm::~RobotomyRequestForm(){}
@@ -33,10 +33,6 @@ RobotomyRequestForm::~RobotomyRequestForm(){}
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	std::cout << "DEBUG" << std::endl;
-	std::cout << executor.getName() << std::endl;
-	std::cout << getName() << std::endl;
-
 	std::cout << executor.getName() << " execute RobotomyRequestForm(" << getName() << ")!" << std::endl;
 	std::srand(std::time(nullptr));
 	// for(int i=0;i<10;i++)
@@ -47,7 +43,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 
 	// 성공
 	if (success)
-		std::cout << getName() << " has been robotomized successfully" << std::endl;
+		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "the robotomy failed" << std::endl;
 }

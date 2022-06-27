@@ -8,18 +8,19 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-	: Form("ShrubberyCreationForm", 25, 5, target)
+	: Form("ShrubberyCreationForm", 145, 137, target)
 {
 
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& a)
 {
-	(void)a;
+	*this = a;
 }
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& a)
 {
-	(void)a;
+	if (this == &a)
+		return *this;
 	return *this;
 }
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
@@ -31,16 +32,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){}
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << executor.getName() << " execute ShrubberyCreationForm(" << getName() << ")!" << std::endl;
-	std::string filename(getName() + "_shrubbery");
-	std::cout << filename << std::endl;
-	std::ofstream writeFile(filename);
-	//std::ofstream writeFile("shrubbery");
+
+	std::string filename(getTarget() + "_shrubbery");
+	std::ofstream writeFile(filename);	// 가끔 공간이없어서 실패함
+
 	if(!writeFile.is_open()){
 		std::cout << "FILE OPEN ERROR" << std::endl;
-		//return (-1);
 		return ;
 	}
-	std::cout << "[DEBUG]" << std::endl;
 	writeFile << "        t" << "\n";
 	writeFile << "       .#." << "\n";
 	writeFile << "      .###." << "\n";

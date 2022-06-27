@@ -7,9 +7,25 @@ int main()
 	try
 	{
 		Intern someRandomIntern;
-		Form* rrf;
+		Form *rrf,*ppf,*scf,*none;
+		Bureaucrat gshim("gshim", 1);
+		std::cout << std::endl;
 
-		rrf = someRandomIntern.makeForm("robotomy request1", "Bender");
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		ppf = someRandomIntern.makeForm("presidential pardon", "Bender2");
+		scf = someRandomIntern.makeForm("shrubbery creation", "Bender3");
+		none = someRandomIntern.makeForm("something bad", "Bender3");
+		std::cout << std::endl;
+
+		gshim.signForm(*rrf);
+		gshim.signForm(*ppf);
+		gshim.signForm(*scf);
+		std::cout << std::endl;
+
+		gshim.executeForm(*rrf);
+		gshim.executeForm(*ppf);
+		gshim.executeForm(*scf);
+		std::cout << std::endl;
 	}
 	catch (std::exception &e)
 	{

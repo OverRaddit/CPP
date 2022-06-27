@@ -168,3 +168,10 @@ concrete 클래스들의 hpp, cpp 생성후 Orthodox Canonical Form 함수 생�
 - Form의 name이 왜 존재하는지 잘 모르겠다;;
 - Form의 concrete class의 멤버필드로 target을 두어야 하나?
 	그런데 모든 concrete class에 target이 필요하므로 그냥 Form에 추가하는게 좋을듯?
+
+# 6/27(월) 19:33
+
+2번째 평가 대기중
+첫번째 평가에서 Form의 concrete class들의 초깃값이 잘못 들어가있는 것 같다.
+
+Form의 초깃값이 잘못들어갔을때....

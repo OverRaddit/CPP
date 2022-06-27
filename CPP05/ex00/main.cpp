@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 #include "Bureaucrat.hpp"
 
 int main()
@@ -29,8 +30,8 @@ int main()
 		A.IncrementGrade(10);
 		A.DecrementGrade(141);
 
-		A.IncrementGrade(9);	// A's grade 10 -> 1
-		//A.DecrementGrade(-9);	// 둘은 다른함수에서 완벽히 동일한 연산을 수행한다.
+		//A.IncrementGrade(9);	// A's grade 10 -> 1
+		A.DecrementGrade(-9);	// 둘은 다른함수에서 완벽히 동일한 연산을 수행한다.
 
 		std::cout << std::endl;
 
@@ -51,3 +52,31 @@ int main()
 	}
 
 }
+
+// int adaf()
+// {
+// 	try{
+// 		// dosomething
+// 		// a
+// 		throw A();
+
+// 		// b
+// 		throw B();
+
+
+// 		// c
+// 		throw C();
+// 	}
+// 	catch(std::exception e){
+// 		// something..
+// 		// something..
+// 		// something..
+// 	}
+// 	//
+// }
+// class A -> getNum();
+// class B -> getNum();
+
+// std::cout << "Hello world!" << STD::ENDL;
+
+// int cout;
