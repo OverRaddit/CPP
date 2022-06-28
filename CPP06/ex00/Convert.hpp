@@ -32,6 +32,7 @@ public:
 
 	// print 함수
 	void printChar(void) const;
+	void printInt(void) const;
 	void printFloat(void) const;
 	void printDouble(void) const;
 	void printAll(void) const;

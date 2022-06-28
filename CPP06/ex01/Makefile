@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/06/27 22:26:39 by gshim            ###   ########.fr        #
+#    Updated: 2022/06/28 18:17:03 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ CDEBUG		=	-g -fsanitize=address
 # =============================================================================
 NAME		=	serialization
 SRCS_DIR	=	./
-SRC_LIST	=	main.cpp
-#				Convert.cpp
+SRC_LIST	=	main.cpp		\
+				Data.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
 OBJS		=	$(SRCS:.cpp=.o)

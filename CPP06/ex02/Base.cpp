@@ -1,6 +1,6 @@
 #include "Base.hpp"
 
-virtual Base::~Base()
+Base::~Base()
 {
 	std::cout << "Base Destructor" << std::endl;
 }

@@ -62,6 +62,11 @@ float Convert::toFloat(void) const
 void Convert::printChar(void) const
 {
 	char ret = toChar();
+	if (std::isnan(value))
+	{
+		std::cout << "impossible";
+		return ;
+	}
 	if (!std::isprint(ret))
 	{
 		std::cout << "Non displayable";
@@ -69,26 +74,55 @@ void Convert::printChar(void) const
 	}
 	std::cout << "'" << ret << "'";
 }
-void Convert::printFloat(void) const
+
+void Convert::printInt(void) const
 {
-	std::cout << toFloat() << "f";
+	int ret = toInt();
+	if (std::isnan(value))
+	{
+		std::cout << "impossible";
+		return ;
+	}
+	std::cout << ret;
 }
 
-// void Convert::printDouble(void) const
-// {
-// 	std::cout << getValue()
-// }
+void Convert::printFloat(void) const
+{
+	// 소수점을 1자리까지 표현하기로 설정.
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
+	std::cout << toFloat() << "f";
+
+	// 소수점 고정해제
+	std::cout.unsetf(std::ios::fixed);
+}
+
+void Convert::printDouble(void) const
+{
+	// 소수점을 1자리까지 표현하기로 설정.
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
+	std::cout << getValue();
+
+	// 소수점 고정해제
+	std::cout.unsetf(std::ios::fixed);
+}
+
 void Convert::printAll(void) const
 {
 	std::cout << "char: "; printChar();
 	std::cout << std::endl;
 
-	std::cout << "int: " << toInt() << std::endl;
+	std::cout << "int: ";  printInt();
+	std::cout << std::endl;
 
 	std::cout << "float: ";printFloat();
 	std::cout << std::endl;
 
-	std::cout << "double: " << getValue() << std::endl;
+	std::cout << "double: ";printDouble();
+	std::cout << std::endl;
 }
 
 // getter 함수

@@ -34,8 +34,6 @@ int main(int argc, char *argv[])
 		//printf("double : %d");
 
 		Convert A(argv[1]);
-		double x = 123.123;
-		std::cout << "isNaN: " << std::isnan(x) << std::endl;
 
 		A.printAll();
 
