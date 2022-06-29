@@ -6,9 +6,9 @@
 # include "B.hpp"
 # include "C.hpp"
 
-static Base* getA();
-static Base* getB();
-static Base* getC();
+Base* getA();
+Base* getB();
+Base* getC();
 
 Base* generate(void);
 void identify(Base* p);
