@@ -26,6 +26,7 @@ void identify(Base* p)
 
 int casting(Base& p, const std::string& name)
 {
+	std::cout << "[casting fun] " << name << std::endl;
 	try
 	{
 		if (name == "A")
@@ -36,12 +37,14 @@ int casting(Base& p, const std::string& name)
 			(void)dynamic_cast<C&>(p);
 		else
 			return 1;
+		std::cout << "p: " << name << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		#ifdef DEBUG
 		std::cerr << e.what() << '\n';
 		#endif
+		return 1;
 	}
 	return 0;
 }
