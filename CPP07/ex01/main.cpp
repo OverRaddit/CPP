@@ -1,40 +1,24 @@
 #include <iostream>
-#include "whatever.hpp"
+#include "iter.hpp"
+#include <string>
 
-// int main()
-// {
-// 	//int a=1,b=3;
-// 	float a=0.9,b=1.5;
+int main()
+{
+	int arr[] = {0, 1, 2, 3, 4};
+	double arr2[] = {0.1, 1.1, 2.1, 3.1, 4.1};
+	float arr3[] = {0.9, 1.9, 2.9, 3.9, 4.9};
+	std::string arr4[] = {"one", "two", "three", "four", "five"};
 
-// 	std::cout << "BEFORE SWAP" << std::endl;
-// 	std::cout << "a: " << a << ", b: " << b << std::endl;
-// 	std::cout << "MAX : " << max(a,b) << std::endl;
-// 	std::cout << "MIN : " << min(a,b) << std::endl;
+	iter<int>(arr, sizeof(arr)/sizeof(int), print<int>);
+	std::cout << std::endl;
 
-// 	swap(a,b);
+	iter<double>(arr2, sizeof(arr2)/sizeof(double), print); // 프린트 템플릿에 자료형을 주지 않아도 앞에서 이미 결정됨.
+	std::cout << std::endl;
 
-// 	std::cout << "AFTER SWAP" << std::endl;
-// 	std::cout << "a: " << a << ", b: " << b << std::endl;
-// 	std::cout << "MAX : " << max(a,b) << std::endl;
-// 	std::cout << "MIN : " << min(a,b) << std::endl;
-// }
+	iter<float>(arr3, sizeof(arr3)/sizeof(float), print<float>);
+	std::cout << std::endl;
 
-int main( void ) {
-	int a = 2;
-	int b = 3;
+	iter<std::string>(arr4, sizeof(arr4)/sizeof(std::string), print<std::string>);
+	std::cout << std::endl;
 
-	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-
-	return 0;
 }

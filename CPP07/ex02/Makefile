@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/07/01 17:45:56 by gshim            ###   ########.fr        #
+#    Updated: 2022/07/01 21:42:08 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,12 @@ LINE_CLEAR	=	"\x1b[1A\x1b[M"
 # =============================================================================
 CXX			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
-CDEBUG		=	-g -fsanitize=address
+CDEBUG		=	-g -fsanitize=address -D DEBUG=1
 
 # =============================================================================
 # File Variables
 # =============================================================================
-NAME		=	template01
+NAME		=	template02
 SRCS_DIR	=	./
 SRC_LIST	=	main.cpp
 
@@ -47,12 +47,12 @@ OBJS		=	$(SRCS:.cpp=.o)
 $(NAME)			:	$(OBJS)
 	@echo $(GREEN) "Source files are compiled!\n" $(EOC)
 	@echo $(WHITE) "Building $(NAME) for" $(YELLOW) "Mandatory" $(WHITE) "..." $(EOC)
-	@$(CXX) $(CFLAGS) $^ -o $@
+	@$(CXX) $(CFLAGS) $(CDEBUG) $^ -o $@
 	@echo $(GREEN) "$(NAME) is created!\n" $(EOC)
 
 $(SRCS_DIR)/%.o	:	$(SRCS_DIR)/%.cpp
 	@echo $(YELLOW) "Compiling...\t" $< $(EOC) $(LINE_CLEAR)
-	@$(CXX) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CFLAGS) $(CDEBUG) -c $< -o $@
 
 # =============================================================================
 # Rules
