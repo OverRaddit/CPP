@@ -70,7 +70,7 @@ public:
 			#ifdef DEBUG
 			std::cout << "[DEBUG] there's Array data" << std::endl;
 			#endif
-			delete data;
+			delete[] data;
 		}
 		else
 		{
@@ -91,7 +91,7 @@ public:
 		#ifdef DEBUG
 			std::cout << "[DEBUG] Destructor" << std::endl;
 		#endif
-		delete data;
+		delete[] data;
 	}					// 소멸자
 
 //=============================================================================

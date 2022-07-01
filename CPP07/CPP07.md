@@ -29,3 +29,7 @@ Any function implementation put in a header file (except for function templates)
 이때 대입연산자 함수에서 쓰레기값이 들어간것을 어떤 곳을 가리킨다고 착각한다.
 
 다른 과제에서 이 부분이 처리되었는 지 잘 모르겠다.
+
+# 7/1(금) 22:02
+
+delete대신 delete[] 로 바꿈.
