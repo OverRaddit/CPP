@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/06/29 19:40:08 by gshim            ###   ########.fr        #
+#    Updated: 2022/07/02 17:47:57 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,12 +47,12 @@ OBJS		=	$(SRCS:.cpp=.o)
 $(NAME)			:	$(OBJS)
 	@echo $(GREEN) "Source files are compiled!\n" $(EOC)
 	@echo $(WHITE) "Building $(NAME) for" $(YELLOW) "Mandatory" $(WHITE) "..." $(EOC)
-	@$(CXX) $(CFLAGS) $^ -o $@
+	@$(CXX) $(CFLAGS) $(CDEBUG) $^ -o $@
 	@echo $(GREEN) "$(NAME) is created!\n" $(EOC)
 
 $(SRCS_DIR)/%.o	:	$(SRCS_DIR)/%.cpp
 	@echo $(YELLOW) "Compiling...\t" $< $(EOC) $(LINE_CLEAR)
-	@$(CXX) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CFLAGS) $(CDEBUG) -c $< -o $@
 
 # =============================================================================
 # Rules

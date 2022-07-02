@@ -33,3 +33,15 @@ Any function implementation put in a header file (except for function templates)
 # 7/1(금) 22:02
 
 delete대신 delete[] 로 바꿈.
+
+# 7/2(토) 16:47
+
+size()가 반환하는건 배열의 크기? 들어가있는 원소의 크기?
+서브젝트에선 둘을 구분하고있나?
+
+Jseo님의 코드에서 배울만한 점.
+- operator[]
+ - 반환형이 const, non-const 2 개의 버전을 작성함 왜??
+	=> const 객체가 인덱싱을 하고싶은데 const 멤버함수만 호출할 수 있으니까 해당버전을 따로 만들어야함.
+ - 인덱싱시 idx를 size_t로 받아 음수처리를 신경쓰지 않게.
+	- 왜 size_t가 아니라 std::size_t라고 했지?

@@ -8,8 +8,7 @@ class Array
 {
 private:
 	T *data;
-	int capacity;	// 동적할당된 배열의 크기
-	int data_size;	// 배열에 든 원소의 개수
+	unsigned int capacity;	// 동적할당된 배열의 크기
 public:
 //=============================================================================
 //	Inner Class
@@ -24,37 +23,32 @@ public:
 //	Orthodox Canonical Form
 //=============================================================================
 	Array()									// 기본생성자 : 빈 배열을 생성
+	: data(NULL), capacity(0)
 	{
 		#ifdef DEBUG
 			std::cout << "[DEBUG] Default Constructor" << std::endl;
 		#endif
-
-		// empty array를 어떻게 해석해야 할지 모르겠다.
-		data = new T[5];	// 기본사이즈는 5
-		capacity = 5;
-		data_size = 0;
-		//memset(data, 0, sizeof(data));
 	};
+
 	Array(unsigned int maxvalue)			// size = maxvalue의 T 배열을 할당, 깊은복사가 필요함을 인지.
+	: capacity(maxvalue)
 	{
 		#ifdef DEBUG
 			std::cout << "[DEBUG] maxvalue Constructor" << std::endl;
 		#endif
 		data = new T[maxvalue];
-		capacity = maxvalue;
-		data_size = 0;
-
-		// 이게 왜 안될까?
-		//memset(data, 0, sizeof(data));
+		memset(data, 0, sizeof(T) * capacity);
 	}
+
 	Array(const Array& c)					// 복사생성자
-		: data(NULL)
+	: data(NULL)
 	{
 		#ifdef DEBUG
 			std::cout << "[DEBUG] Copy Constructor" << std::endl;
 		#endif
 		*this = c;
 	}
+
 	Array& operator=(const Array& a)		// 대입연산자
 	{
 		#ifdef DEBUG
@@ -72,34 +66,32 @@ public:
 			#endif
 			delete[] data;
 		}
-		else
-		{
-			#ifdef DEBUG
-			std::cout << "[DEBUG] there's no Array data" << std::endl;
-			#endif
-		}
-
-		// a의 데이터를 동적생성하여 복사.
-		// 이 부분이 제대로 동작하는 지 모르겠다.
 		data = new T[a.size()];
+		for (size_t i = 0; i < a.size(); i++)
+			data[i] = a.data[i];
 		capacity = a.capacity;
-		data_size = a.data_size;
 		return *this;
 	}
-	~Array()
+	~Array()							// 소멸자
 	{
 		#ifdef DEBUG
 			std::cout << "[DEBUG] Destructor" << std::endl;
 		#endif
 		delete[] data;
-	}					// 소멸자
+	}
 
 //=============================================================================
 //	Overloading
 //=============================================================================
-	T& operator[] (int idx)				// []연산자 오버로딩, bound검사 with try-catch
+	const T& operator[] (size_t idx) const // const version
 	{
-		if (idx < 0 || idx >= capacity)
+		if (idx >= capacity)
+			throw BoundaryException();	// 예외 객체를 만들 필요가 있을까?
+		return data[idx];
+	}
+	T& operator[] (size_t idx) // non-const version
+	{
+		if (idx >= capacity)
 			throw BoundaryException();	// 예외 객체를 만들 필요가 있을까?
 		return data[idx];
 	}
@@ -107,9 +99,7 @@ public:
 //=============================================================================
 //	Method
 //=============================================================================
-	int size() const { return data_size; };	// 배열 아이템개수 반환
-
-
+	size_t size() const { return capacity; };	// 배열용량 반환
 
 };
 
