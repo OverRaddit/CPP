@@ -33,3 +33,9 @@ Any function implementation put in a header file (except for function templates)
 # 7/1(금) 22:02
 
 delete대신 delete[] 로 바꿈.
+
+# 7/2(토) 14:16
+
+이 문구의 의도를 모르겠다.
+Tip: Try to compile int * a = new int(); then display *a.
+그냥 int *a => int * a 이렇게 쓰라는 건가? 왜지...?
