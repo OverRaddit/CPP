@@ -54,8 +54,6 @@ void	Account::_displayTimestamp( void )
 	//std::cout << "[19920104_091532] ";
 }
 
-// 왜 static을 쓸 수 없지?
-//static void	Account::displayAccountsInfos(void)
 /*
 [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 */
@@ -68,7 +66,6 @@ void	Account::displayAccountsInfos(void)
 	std::cout << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
-// 뒤에 const붙은건 뭐지?
 /*
 [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
 */
@@ -86,7 +83,6 @@ void	Account::displayStatus(void) const
 */
 void	Account::makeDeposit( int deposit )
 {
-
 	// 개인정보 갱신
 	_amount += deposit;
 	_nbDeposits++;
@@ -105,6 +101,11 @@ void	Account::makeDeposit( int deposit )
 
 bool	Account::makeWithdrawal( int withdrawal )
 {
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex;
+	std::cout << ";p_amount:" << _amount;
+	std::cout << ";withdrawal:";
+
 	bool flag = true;
 	if (_amount < withdrawal)
 		flag = false;
@@ -119,10 +120,6 @@ bool	Account::makeWithdrawal( int withdrawal )
 		_totalNbWithdrawals++;
 	}
 
-	_displayTimestamp();
-	std::cout << "index:" << _accountIndex;
-	std::cout << ";p_amount:" << _amount + withdrawal;
-	std::cout << ";withdrawal:";
 	if (flag)
 		std::cout << withdrawal;
 	else
