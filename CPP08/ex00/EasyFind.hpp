@@ -18,11 +18,11 @@ template <class T>
 typename T::iterator easyfind(T& v, int value)
 {
 	typename T::iterator iter;
-
+	// v = vector<int>
 	// 검색결과 없을경우 throw
-	iter = std::find(std::begin(v), std::end(v), value);
-	if (iter == std::end(v))
-		throw NoElementException();
+	iter = std::find(v.begin(), v.end(), value);
+	if (iter == v.end())
+		throw std::exception();
 	else
 		return iter;
 	// std::cout << "Find item : " << *iter << std::endl;
