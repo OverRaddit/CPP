@@ -34,7 +34,12 @@ Any function implementation put in a header file (except for function templates)
 
 delete대신 delete[] 로 바꿈.
 
-<<<<<<< HEAD
+# 7/2(토) 14:16
+
+이 문구의 의도를 모르겠다.
+Tip: Try to compile int * a = new int(); then display *a.
+그냥 int *a => int * a 이렇게 쓰라는 건가? 왜지...?
+
 # 7/2(토) 16:47
 
 size()가 반환하는건 배열의 크기? 들어가있는 원소의 크기?
@@ -46,10 +51,3 @@ Jseo님의 코드에서 배울만한 점.
 	=> const 객체가 인덱싱을 하고싶은데 const 멤버함수만 호출할 수 있으니까 해당버전을 따로 만들어야함.
  - 인덱싱시 idx를 size_t로 받아 음수처리를 신경쓰지 않게.
 	- 왜 size_t가 아니라 std::size_t라고 했지?
-=======
-# 7/2(토) 14:16
-
-이 문구의 의도를 모르겠다.
-Tip: Try to compile int * a = new int(); then display *a.
-그냥 int *a => int * a 이렇게 쓰라는 건가? 왜지...?
->>>>>>> 47980df112251b4f7afae1aababce0cae2241dbe
