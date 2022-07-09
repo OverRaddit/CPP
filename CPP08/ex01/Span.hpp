@@ -13,12 +13,10 @@ private:
 	std::vector<int> v;
 	unsigned int size;
 	bool isSort;
+
+	Span(){} // [3]
 public:
 // orthodox canonical form
-	Span() : size(0), isSort(false)
-	{
-
-	}
 	Span(unsigned int N) : size(N), isSort(false)
 	{
 	}
@@ -44,6 +42,15 @@ public:
 		v.push_back(n);
 		isSort = false;
 	}
+	void addNumbers(std::vector<int> &input)
+	{
+		if (v.size() >= size)
+			throw std::exception();
+		//std::cout << "v.size() = " << v.size() << std::endl;
+		v.push_back(n);
+		isSort = false;
+	}
+
 	int shortestSpan()
 	{
 		int ret = INT_MAX;	// [1] climits 헤더 추가 안했는데 왜 돌아가지..?
