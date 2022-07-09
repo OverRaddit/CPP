@@ -6,7 +6,7 @@
 #    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/07/09 16:41:03 by gshim            ###   ########.fr        #
+#    Updated: 2022/07/09 16:57:03 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ CDEBUG		=	-g -fsanitize=address -D DEBUG=1
 # =============================================================================
 # File Variables
 # =============================================================================
-NAME		=	ex01
+NAME		=	MutantStack
 SRCS_DIR	=	./
 SRC_LIST	=	main.cpp		\
-				Span.cpp
+				MutantStack.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
 OBJS		=	$(SRCS:.cpp=.o)

@@ -14,66 +14,42 @@ private:
 	unsigned int size;
 	bool isSort;
 
-	Span(){} // [3]
+	Span(); // [3]
 public:
-// orthodox canonical form
-	Span(unsigned int N) : size(N), isSort(false)
-	{
-	}
-	Span(const Span& s)
-	{
-		*this = s;
-	}
-	const Span& operator=(const Span& s)
-	{
-		if (this == &s)
-			return *this;
-		v = s.v;	// stl vector가 이미 내부적으로 깊은복사가 구현되어 있다
-		return *this;
-	}
-	~Span(){}
+//=============================================================================
+//	Orthodox Canonical Form
+//=============================================================================
+	Span(unsigned int N);
+	Span(const Span& s);
+	const Span& operator=(const Span& s);
+	~Span();
+//=============================================================================
+//	Function
+//=============================================================================
+	void addNumber(int n);
 
-// function
-	void addNumber(int n)
+	template<class T>
+	void addNumbers(T& input)
 	{
-		if (v.size() >= size)
+		if (size < v.size() + input.size())
 			throw std::exception();
-		//std::cout << "v.size() = " << v.size() << std::endl;
-		v.push_back(n);
+
+		v.insert(v.end(), input.begin(), input.end());
 		isSort = false;
 	}
-	void addNumbers(std::vector<int> &input)
-	{
-		if (v.size() >= size)
-			throw std::exception();
-		//std::cout << "v.size() = " << v.size() << std::endl;
-		v.push_back(n);
-		isSort = false;
-	}
+	// void addNumbers(std::vector<int> &input)
+	// {
+	// 	//std::cout << v.size() << " " << size << " " << input.size() << std::endl;
+	// 	if (size < v.size() + input.size())
+	// 		throw std::exception();
+	// 	v.insert(v.end(), input.begin(), input.end());
+	// 	isSort = false;
+	// }
 
-	int shortestSpan()
-	{
-		int ret = INT_MAX;	// [1] climits 헤더 추가 안했는데 왜 돌아가지..?
-		if (v.size() <= 1)
-			throw std::exception();
-		if (!isSort)
-			sort(v.begin(), v.end());
+	const std::vector<int>& getData(void) const;
 
-		for(size_t i=0; i < v.size() - 1; i++)	// [2] v.size()의 반환값은 size_t
-			if (v[i + 1] - v[i] < ret)
-				ret = v[i + 1] - v[i];
-
-		return ret;
-	}
-	int longestSpan()
-	{
-		if (v.size() <= 1)
-			throw std::exception();
-		if (!isSort)
-			sort(v.begin(), v.end());
-
-		return v[v.size() - 1] - v[0];
-	}
+	long long shortestSpan();
+	long long longestSpan();
 };
 
 #endif

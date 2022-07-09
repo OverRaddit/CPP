@@ -67,5 +67,78 @@ true라면 sort하지 않는다.(이미 sort된 상태이기 때문이다.)
 [3] orthodox canonical form때문에 기본생성자를 구현해야 하지만, 내가 원하는 생성자만으로
 	인스턴스가 생성되었으면 좋겠다. 기본생성자를 호출할 수 없게 private에 선언한다.
 
+[4] ret가 가지는 범위는??
+	0 ~ (INT_MAX - INT_MIN)
+
+	2,147,483,647 + 2,147,483,648 = 4 294 967 295
+
+	unsigned <-> signed를 형변환 하면 귀찮고 비용이 많이 드니까 그냥 롱롱으로 선언하자.
+
+### Range-Based...
+- 원소 하나를 넣지않고 원소 집합의 범위를 넣는다는 뜻인 것 같다.
+이때 범위를 어떻게 표현하는 지가 관건인데,
+포인터가 될 수도 있고 컨테이너의 특정 위치를 가르키는 이터레이터가 될 수도 있다.
+해당 자료형을 <T>로 잡고 구현해야 할 것 같다.
+
+### 아쉬운 점...
+- 적절한 std의 함수들, STL을 어떻게 찾아내는지 모르겠다.
+- 테스트함수에 vector말고 다른 걸 시도해보지 않았음.
+
 ## ex02
 
+[1] 왜 rbegin, rend가 필요한가?
+- iterator는 양방향과 순방향 이터레이터가 있다.
+- 만약 end에서부터 begin순, 즉 역순으로 참조하고 싶으면 iterator가 감소연산을 할수있어야 한다.
+- 대신 rbegin, rend를 두면 순방향 iterator만으로 역순참조가 가능하다.
+- 의문인점은... 감소연산이 가능한 양방향 이터레이터를 쓰지 않고 순방향 이터레이터만으로 쓰기 위해
+	rbegin, rend를 쓰는게 효율이 좋은가...? 그걸 증명하는 방법은?
+
+[2] orthodox canonical form에서 어떻게 해야할지 모르겠따.
+- 애초에 기반클래스의 orthodox가 차례로 호출되기 때문에 굳이 다른 구현을 할 필요가 없을 것 같다.
+
+iterable하지 않은 std::stack을 이용해 구현해야 한다.
+
+std::stack에 원래 존재하지 않는 이터레이터를 추가로 구현한 클래스를 구현하라는 것 같다.
+
+std::stack의 멤버 변수 원형을 정리하자.
+
+MutantStack을 구현할때, std::stack을 상속하면 stack의 기능을 그대로 사용할 수 있다.
+처음에는 MutantStack의 멤버변수로 std::stack을 두어야 겠다고 생각했는데 잘못 생각한듯.
+
+jseo님의 문서에는 이렇게 적혀있다.
+
+> 기반으로 생성된다는 것이 곧 상속을 의미하는 것이 아니다. 선택된 Sequential Container를 적절히 캡슐화하여 내부 로직을 가공해서 Adaptor Container로 제공된다.
+
+# 7/9(토) 19:42
+
+- 기반 클래스를 상속받아서 구현해야 되는 점은 알겠다.
+
+- orthodox canonical form에서 어떻게 해야할지 모르겠따.
+	- 애초에 기반클래스의 orthodox가 차례로 호출되기 때문에 굳이 다른 구현을 할 필요가 없을 것 같다.
+- MutantStack<int>::iterator 를 어떻게 구현해야 할 지 모르겠다.
+	- BidirectionalIterator(양방향)		: 앞뒤 이동 가능. 감소 연산자를 정의한다.
+	- 스택의 꼭대기에서 아이템이 추가되거나 삭제됨에 따라 top을 다르게 가리켜야 한다.
+	- 따라서 양방향 이터레이터가 필요하다고 생각된다.
+
+
+# 7/9(토) 20:05 진유와의 동료학습 정리
+
+- std::stack<T> 를 상속하면 stack의 모든 멤버변수와 멤버함수를 사용할 수 있다.
+
+- main함수의 MutantStack<T>::iterator it 는 int i 처럼 (타입) 인스턴스명; 이다.
+- 즉 MutantStack<T>::iterator는 타입임을 알릴 필요가 있다.
+- typedef typename std::stack<T>::container_type::iterator iterator; 를 선언하자.
+	- container_type은 컨테이너 타입을 나타내는 자료형이름이다. stack lib 까보면 확인가능하다.
+	- 위 선언을 public에다가 하지 않고 private으로 해두면 밖에서 해당 타입을 선언할 수 없다.
+	- typedef는 private/public 블록 안에서만 유효하다!!
+
+- 왜 rbegin, rend가 필요한가?
+	- iterator는 양방향과 순방향 이터레이터가 있다.
+	- 만약 end에서부터 begin순, 즉 역순으로 참조하고 싶으면 iterator가 감소연산을 할수있어야 한다.
+	- 대신 rbegin, rend를 두면 순방향 iterator만으로 역순참조가 가능하다.
+	- 의문인점은... 감소연산이 가능한 양방향 이터레이터를 쓰지 않고 순방향 이터레이터만으로 쓰기 위해
+		rbegin, rend를 쓰는게 효율이 좋은가...? 그걸 증명하는 방법은?
+	- FI, BI의 비용이 그정도로 차이가 날까?
+
+- FI, BI의 비용은 얼마나 차이가 나는가?
+	- 단방향 연결리스트와 양방향 연결리스트의 차이정도?
