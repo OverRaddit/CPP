@@ -64,15 +64,15 @@ void test_orthodox()
 		s.pop();
 	}
 
-// 	std::stack<int> assign;
-// 	assign = mstack;
-// 	std::cout << "Assignment Stack will pop" << std::endl;
-// 	while (!assign.empty())
-// 	{
-// 		std::cout << assign.top() << std::endl;
-// 		assign.pop();
-// 	}
-// }
+	std::stack<int> assign;
+	assign = mstack;
+	std::cout << "Assignment Stack will pop" << std::endl;
+	while (!assign.empty())
+	{
+		std::cout << assign.top() << std::endl;
+		assign.pop();
+	}
+}
 
 // void test_reverse_iterator()
 // {
