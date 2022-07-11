@@ -10,15 +10,15 @@ int main()
 
 	for(int i=0;i<=9;i++)
 		v.push_back(i);
-	v[0] = 999;
-	v[9] = 0;
+	// v[0] = 999;
+	// v[9] = 0;
 
 	// print value
 	try
 	{
 		std::cout << *easyfind(v, 3) << '\n';
 		std::cout << *easyfind(v, 9) << '\n';
-		std::cout << *easyfind(v, 99) << '\n';
+		std::cout << *easyfind(v, 99) << '\n';	// 존재하지 않는 값
 	}
 	catch(const std::exception& e)
 	{

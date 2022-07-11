@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gshim <gshim@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: gshim <gshim@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 17:48:50 by gshim             #+#    #+#              #
-#    Updated: 2022/07/07 12:40:49 by gshim            ###   ########.fr        #
+#    Updated: 2022/07/10 16:57:27 by gshim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ CDEBUG		=	-g -fsanitize=address -D DEBUG=1
 # =============================================================================
 NAME		=	easyfind
 SRCS_DIR	=	./
-SRC_LIST	=	main.cpp			\
-				easyfind.cpp
+SRC_LIST	=	main.cpp		\
+				EasyFind.cpp
 
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC_LIST))
 OBJS		=	$(SRCS:.cpp=.o)

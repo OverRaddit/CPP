@@ -16,7 +16,8 @@ void test_sample(){
 // 한번에 여러 숫자를 입력하는 멤버함수 기능검사
 void test_addNumbers(){
 	Span sp = Span(105);
-	std::vector<int> arr;
+	//std::vector<int> arr;
+	std::list<int> arr;
 
 	sp.addNumber(6);
 	sp.addNumber(3);
@@ -121,6 +122,20 @@ void test_spanException(){
 
 }
 
+void test_10thousand()
+{
+	Span sp = Span(10000);
+	std::vector<int> arr;
+
+	for(int i=0;i<10000;i++)
+		arr.push_back(i);
+
+	sp.addNumbers(arr);
+
+	std::cout << "sp's size = " << sp.getData().size() << std::endl;
+	for(int i=0;i<10000;i++)
+		std::cout << sp.getData()[i] << "\n";
+}
 
 int main() {
 
@@ -131,5 +146,6 @@ int main() {
 	test_StoreException();
 	test_zero();
 	test_spanException();
+	test_10thousand();
 	return 0;
 }

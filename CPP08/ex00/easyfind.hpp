@@ -5,13 +5,13 @@
 # include <algorithm>
 # include <iostream>
 # include <vector>
-// 편의상 여기서 예외클래스를 정의했지만 다른 파일로 옮겨야 한다.
+
 class NoElementException : public std::exception
 {
 private:
 public:
-	virtual ~NoElementException() throw(){};
-	virtual const char* what() const throw(){return "NoElementException";};
+	virtual ~NoElementException() throw();
+	virtual const char* what() const throw();
 };
 
 template <class T>
@@ -22,7 +22,7 @@ typename T::iterator easyfind(T& v, int value)
 	// 검색결과 없을경우 throw
 	iter = std::find(v.begin(), v.end(), value);
 	if (iter == v.end())
-		throw std::exception();
+		throw NoElementException();
 	else
 		return iter;
 	// std::cout << "Find item : " << *iter << std::endl;

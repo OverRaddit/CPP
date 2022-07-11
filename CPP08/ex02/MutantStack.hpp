@@ -53,5 +53,4 @@ public:
 	// reverse_iterator rbegin(void) { std::list<T>::rbegin();}
 	// reverse_iterator rend(void){ std::list<T>::rend();};
 };
-
 #endif

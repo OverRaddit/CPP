@@ -5,6 +5,7 @@
 # include <algorithm>
 # include <iostream>
 # include <vector>
+# include <list>
 # include <climits>	// 무슨 이유인지 이 헤더가 없어도 INT_MAX를 쓸 수 있다.
 
 class Span
